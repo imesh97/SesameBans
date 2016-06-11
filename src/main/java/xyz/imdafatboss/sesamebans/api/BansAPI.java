@@ -2,6 +2,7 @@ package xyz.imdafatboss.sesamebans.api;
 
 import org.bukkit.entity.Player;
 import xyz.imdafatboss.sesamebans.Home;
+import xyz.imdafatboss.sesamebans.config.ConfigYML;
 import xyz.imdafatboss.sesamebans.config.FileManager;
 
 public class BansAPI {
@@ -13,6 +14,7 @@ public class BansAPI {
 
     }
     FileManager fm;
+    ConfigYML cfg;
 
     public FileManager.Config getData(){
 
@@ -21,16 +23,18 @@ public class BansAPI {
 
     }
 
-    public FileManager.Config mainConfig(){
-
-        fm = new FileManager(plugin);
-        return fm.getConfig("config.yml");
-
-    }
-
     public void kickPlayer(Player p, String reason){
 
         
+
+    }
+
+    public void kickPlayer(Player p){
+
+        cfg = new ConfigYML(plugin);
+        String s = cfg.prefix() + cfg.getDefaultKick();
+
+        p.kickPlayer(s);
 
     }
 
