@@ -25,7 +25,7 @@ public class ChatAPI {
 
         for(Player o : Bukkit.getOnlinePlayers()){
 
-            if(o.hasPermission(cfg.getStaffPermission())){
+            if(o.hasPermission("sesamebans.staff")){
 
                 p.add(o);
 

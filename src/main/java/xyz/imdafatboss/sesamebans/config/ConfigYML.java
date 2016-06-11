@@ -27,12 +27,6 @@ public class ConfigYML {
 
     }
 
-    public String getStaffPermission(){
-
-        return getConfig().get().getString("perms.staff");
-
-    }
-
     public String prefix(){
 
         return getPrefix() + " ";
