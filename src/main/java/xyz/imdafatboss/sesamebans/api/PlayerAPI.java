@@ -53,11 +53,11 @@ public class PlayerAPI {
 
     }
 
-    public boolean isIPBanned(Player p){
+    public boolean isIPBanned(String ip){
 
-        for(String s : getData().get().getConfigurationSection("ipbans").getKeys(false)){
+        for(String s : getData().get().getStringList("ipbans")){
 
-            if(s.equals(p.getUniqueId().toString())){
+            if(s.equals(ip)){
 
                 return true;
 
