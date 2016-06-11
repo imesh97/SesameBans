@@ -82,6 +82,8 @@ public class PlayerAPI {
         cfg.get().set(path + "reason", reason);
         cfg.get().set(path + "date", time);
 
+        cfg.save();
+
     }
 
 }
