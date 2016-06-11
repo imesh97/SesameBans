@@ -41,9 +41,13 @@ public class CommandManager implements CommandExecutor {
 
                 if(sender instanceof Player) {
 
-                    if(sender.hasPermission(cmds.getPermission())) {
+                    if(cmds.getPermission() != null) {
                         
-                        cmds.execute(sender, args);
+                        if (sender.hasPermission(cmds.getPermission())) {
+
+                            cmds.execute(sender, args);
+
+                        }
 
                     }
 
