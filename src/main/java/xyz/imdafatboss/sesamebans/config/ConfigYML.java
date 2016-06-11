@@ -55,4 +55,14 @@ public class ConfigYML {
 
     }
 
+    public String getStaffChat(String message, String p){
+
+        String s = getStaffChatFormat();
+        String s1 = s.replaceAll("%player%", p);
+        String s2 = s1.replaceAll("%message%", message);
+
+        return Msg.translate(s2);
+
+    }
+
 }

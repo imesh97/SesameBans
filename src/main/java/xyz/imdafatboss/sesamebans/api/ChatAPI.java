@@ -49,4 +49,16 @@ public class ChatAPI {
 
     }
 
+    public void sendStaffMessage(String message, String p){
+
+        cfg = new ConfigYML(plugin);
+        for(Player o : getStaff()){
+
+            String s = cfg.getStaffChat(message, p);
+            o.sendMessage(s);
+
+        }
+
+    }
+
 }
