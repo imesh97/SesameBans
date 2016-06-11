@@ -69,7 +69,7 @@ public class PlayerAPI {
 
     }
 
-    public void banPlayer(Player p, int sec, String reason){
+    public void tempBanPlayer(Player p, int sec, String reason){
 
         long t = sec * 1000L;
         long time = System.currentTimeMillis() + t;
@@ -77,7 +77,24 @@ public class PlayerAPI {
         FileManager.Config cfg = getData();
         String path = uuid + ".";
 
-        cfg.get().createSection(uuid);
+        cfg.get().getConfigurationSection("tempbans").createSection(uuid);
+        cfg.get().set(path + "uuid", uuid);
+        cfg.get().set(path + "reason", reason);
+        cfg.get().set(path + "date", time);
+
+        cfg.save();
+
+    }
+
+    public void tempMutePlayer(Player p, int sec, String reason){
+
+        long t = sec * 1000L;
+        long time = System.currentTimeMillis() + t;
+        String uuid = p.getUniqueId().toString();
+        FileManager.Config cfg = getData();
+        String path = uuid + ".";
+
+        cfg.get().getConfigurationSection("tempmutes").createSection(uuid);
         cfg.get().set(path + "uuid", uuid);
         cfg.get().set(path + "reason", reason);
         cfg.get().set(path + "date", time);
