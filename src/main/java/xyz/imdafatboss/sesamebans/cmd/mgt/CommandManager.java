@@ -26,9 +26,9 @@ public class CommandManager implements CommandExecutor {
 
     }
 
-    public void registerCommands(){
+    public void registerCommands(Home jp){
 
-        registerCommand(new StaffChatCmd());
+        registerCommand(new StaffChatCmd(jp));
 
     }
 
@@ -42,7 +42,7 @@ public class CommandManager implements CommandExecutor {
                 if(sender instanceof Player) {
 
                     if(cmds.getPermission() != null) {
-                        
+
                         if (sender.hasPermission(cmds.getPermission())) {
 
                             cmds.execute(sender, args);
