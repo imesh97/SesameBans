@@ -3,6 +3,7 @@ package xyz.imdafatboss.sesamebans.cmd.mgt;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import xyz.imdafatboss.sesamebans.Home;
 import xyz.imdafatboss.sesamebans.cmd.StaffChatCmd;
 
@@ -38,7 +39,25 @@ public class CommandManager implements CommandExecutor {
 
             if (cmds.getName().equalsIgnoreCase(cmd.getName())){
 
-                cmds.execute(sender, args);
+                if(sender instanceof Player) {
+
+                    if(sender.hasPermission(cmds.getPermission())) {
+                        
+                        cmds.execute(sender, args);
+
+                    }
+
+                }
+
+                else{
+
+                    if(cmds.allowsConsole()){
+
+                        cmds.execute(sender, args);
+
+                    }
+
+                }
 
             }
 
