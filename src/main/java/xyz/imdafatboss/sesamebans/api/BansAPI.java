@@ -4,6 +4,7 @@ import org.bukkit.entity.Player;
 import xyz.imdafatboss.sesamebans.Home;
 import xyz.imdafatboss.sesamebans.config.ConfigYML;
 import xyz.imdafatboss.sesamebans.config.FileManager;
+import xyz.imdafatboss.sesamebans.utils.Msg;
 
 public class BansAPI {
 
@@ -25,7 +26,8 @@ public class BansAPI {
 
     public void kickPlayer(Player p, String reason){
 
-        
+        String s = Msg.translate(reason);
+        p.kickPlayer(s);
 
     }
 
