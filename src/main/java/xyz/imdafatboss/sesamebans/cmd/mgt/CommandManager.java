@@ -51,6 +51,12 @@ public class CommandManager implements CommandExecutor {
 
                     }
 
+                    else{
+
+                        cmds.execute(sender, args);
+
+                    }
+
                 }
 
                 else{
