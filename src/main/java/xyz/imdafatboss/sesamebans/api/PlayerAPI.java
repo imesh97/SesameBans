@@ -239,8 +239,9 @@ public class PlayerAPI {
 
     public void kickPlayer(Player p, String reason){
 
+        cfg = new ConfigYML(plugin);
         String s = Msg.translate(reason);
-        p.kickPlayer(s);
+        p.kickPlayer(cfg.prefix() + s);
 
     }
 

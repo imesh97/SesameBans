@@ -48,24 +48,26 @@ public class ChatAPI {
     public void sendStaffMessage(String message, Player p){
 
         cfg = new ConfigYML(plugin);
+        String s = cfg.getStaffChat(message, p);
         for(Player o : getStaff()){
 
-            String s = cfg.getStaffChat(message, p);
             o.sendMessage(s);
 
         }
+        plugin.getLogger().info(s);
 
     }
 
     public void sendStaffMessage(String message, String p){
 
         cfg = new ConfigYML(plugin);
+        String s = cfg.getStaffChat(message, p);
         for(Player o : getStaff()){
 
-            String s = cfg.getStaffChat(message, p);
             o.sendMessage(s);
 
         }
+        plugin.getLogger().info(s);
 
     }
 
@@ -89,6 +91,7 @@ public class ChatAPI {
             p1.sendMessage(msg.prefix() + s5);
 
         }
+        plugin.getLogger().info(s5);
 
     }
 
@@ -112,6 +115,7 @@ public class ChatAPI {
             p1.sendMessage(msg.prefix() + s5);
 
         }
+        plugin.getLogger().info(s5);
 
     }
 
@@ -130,6 +134,7 @@ public class ChatAPI {
             p1.sendMessage(msg.prefix() + s3);
 
         }
+        plugin.getLogger().info(s3);
 
     }
 
@@ -148,6 +153,7 @@ public class ChatAPI {
             p1.sendMessage(msg.prefix() + s3);
 
         }
+        plugin.getLogger().info(s3);
 
     }
 
@@ -172,6 +178,7 @@ public class ChatAPI {
             p1.sendMessage(msg.prefix() + s5);
 
         }
+        plugin.getLogger().info(s5);
 
     }
 
@@ -195,6 +202,7 @@ public class ChatAPI {
             p1.sendMessage(msg.prefix() + s5);
 
         }
+        plugin.getLogger().info(s5);
 
     }
 
@@ -213,6 +221,7 @@ public class ChatAPI {
             p1.sendMessage(msg.prefix() + s3);
 
         }
+        plugin.getLogger().info(s3);
 
     }
 
@@ -231,6 +240,29 @@ public class ChatAPI {
             p1.sendMessage(msg.prefix() + s3);
 
         }
+        plugin.getLogger().info(s3);
+
+    }
+
+    // Kicking
+    public void broadcastKick(Player p, String kicker, String reason){
+
+        msg = new MessagesYML(plugin);
+        String date = TimeUtils.getDate(System.currentTimeMillis());
+
+        String s = msg.getKickBroadcast();
+        String s1 = s.replaceAll("%player%", p.getName());
+        String s2 = s1.replaceAll("%kicker%", kicker);
+        String s3 = s2.replaceAll("%date%", date);
+        String s4 = s3.replaceAll("%reason%", reason);
+        String s5 = Msg.translate(s4);
+
+        for(Player p1 : Bukkit.getOnlinePlayers()){
+
+            p1.sendMessage(msg.prefix() + s5);
+
+        }
+        plugin.getLogger().info(s5);
 
     }
 

@@ -31,13 +31,19 @@ public class MessagesYML {
 
     public String getNoPerm(){
 
-        return getConfig().get().getString("no-permission");
+        return Msg.translate(getConfig().get().getString("no-permission"));
+
+    }
+
+    public String getPlayerOffline(){
+
+        return Msg.translate(getConfig().get().getString("player-offline"));
 
     }
 
     public String getPlayerOnlyCmd(){
 
-        return getConfig().get().getString("player-only-cmd");
+        return Msg.translate(getConfig().get().getString("player-only-cmd"));
 
     }
 
@@ -122,6 +128,18 @@ public class MessagesYML {
     public String getUnmuteBroadcast(){
 
         return Msg.translate(getConfig().get().getString("broadcast.unmute"));
+
+    }
+
+    public String getUsageKick(){
+
+        return Msg.translate(getConfig().get().getString("usage.kick"));
+
+    }
+
+    public String getKickBroadcast(){
+
+        return Msg.translate(getConfig().get().getString("broadcast.kick"));
 
     }
 

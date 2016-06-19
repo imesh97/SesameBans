@@ -20,3 +20,6 @@ commands:
     unmute:
         description: Unmute a player
         aliases: [unmutep, unmuteplayer, umute]
+    kick:
+        description: Kick a player
+        aliases: [kickp, kickplayer]
