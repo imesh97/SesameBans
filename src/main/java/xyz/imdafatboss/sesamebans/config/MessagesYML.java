@@ -1,5 +1,6 @@
 package xyz.imdafatboss.sesamebans.config;
 
+import org.bukkit.entity.Player;
 import xyz.imdafatboss.sesamebans.Home;
 import xyz.imdafatboss.sesamebans.utils.Msg;
 
@@ -12,11 +13,31 @@ public class MessagesYML {
 
     }
     FileManager fm;
+    ConfigYML cfg;
 
     public FileManager.Config getConfig(){
 
         fm = new FileManager(plugin);
         return fm.getConfig("messages.yml");
+
+    }
+
+    public String prefix(){
+
+        cfg = new ConfigYML(plugin);
+        return cfg.prefix();
+
+    }
+
+    public String getNoPerm(){
+
+        return getConfig().get().getString("no-permission");
+
+    }
+
+    public String getPlayerOnlyCmd(){
+
+        return getConfig().get().getString("player-only-cmd");
 
     }
 
@@ -41,6 +62,12 @@ public class MessagesYML {
     public String getAlreadyBanned(){
 
         return Msg.translate(getConfig().get().getString("already.banned"));
+
+    }
+
+    public String getBanBroadcast(){
+
+        return Msg.translate(getConfig().get().getString("broadcast.ban"));
 
     }
 
