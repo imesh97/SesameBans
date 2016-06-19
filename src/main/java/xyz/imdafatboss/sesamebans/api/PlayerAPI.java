@@ -93,7 +93,7 @@ public class PlayerAPI {
 
         String uuid = p.getUniqueId().toString();
         FileManager.Config cfg = getData();
-        String path = uuid + ".";
+        String path = "bans" + uuid + ".";
 
         cfg.get().getConfigurationSection("bans").createSection(uuid);
         cfg.get().set(path + "uuid", uuid);
@@ -103,11 +103,31 @@ public class PlayerAPI {
 
     }
 
+    public void unbanPlayer(Player p){
+
+        String uuid = p.getUniqueId().toString();
+        FileManager.Config cfg = getData();
+
+        cfg.get().set("bans" + uuid, null);
+        cfg.save();
+
+    }
+
+    public void unbanOfflinePlayer(OfflinePlayer p){
+
+        String uuid = p.getUniqueId().toString();
+        FileManager.Config cfg = getData();
+
+        cfg.get().set("bans" + uuid, null);
+        cfg.save();
+
+    }
+
     public void mutePlayer(Player p, String reason){
 
         String uuid = p.getUniqueId().toString();
         FileManager.Config cfg = getData();
-        String path = uuid + ".";
+        String path = "mutes" + uuid + ".";
 
         cfg.get().getConfigurationSection("mutes").createSection(uuid);
         cfg.get().set(path + "uuid", uuid);
@@ -123,7 +143,7 @@ public class PlayerAPI {
         long time = System.currentTimeMillis() + t;
         String uuid = p.getUniqueId().toString();
         FileManager.Config cfg = getData();
-        String path = uuid + ".";
+        String path = "tempbans" + uuid + ".";
 
         cfg.get().getConfigurationSection("tempbans").createSection(uuid);
         cfg.get().set(path + "uuid", uuid);
@@ -140,7 +160,7 @@ public class PlayerAPI {
         long time = System.currentTimeMillis() + t;
         String uuid = p.getUniqueId().toString();
         FileManager.Config cfg = getData();
-        String path = uuid + ".";
+        String path = "tempmutes" + uuid + ".";
 
         cfg.get().getConfigurationSection("tempmutes").createSection(uuid);
         cfg.get().set(path + "uuid", uuid);
