@@ -58,8 +58,8 @@ public class MuteCmd extends CommandFactory{
                     String msg = sb.toString().trim();
                     String reason = Msg.translate(msg);
 
-                    chat.broadcastMute(tar, p.getName());
                     papi.mutePlayer(tar, reason);
+                    chat.broadcastMute(tar, p.getName());
                     return;
 
                 }
@@ -87,8 +87,8 @@ public class MuteCmd extends CommandFactory{
                     String msg = sb.toString().trim();
                     String reason = Msg.translate(msg);
 
-                    chat.broadcastMute(tarp, sender.getName());
                     papi.muteOfflinePlayer(tarp, reason);
+                    chat.broadcastMute(tarp, sender.getName());
                     return;
 
                 }
