@@ -1,5 +1,7 @@
 package xyz.imdafatboss.sesamebans.api;
 
+import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.entity.Player;
 import xyz.imdafatboss.sesamebans.Home;
 import xyz.imdafatboss.sesamebans.config.ConfigYML;
 import xyz.imdafatboss.sesamebans.config.FileManager;
@@ -22,6 +24,10 @@ public class DataAPI {
 
     }
 
+    public ConfigurationSection getBan(Player p){
 
+        return getData().get().getConfigurationSection("bans" + p.getUniqueId().toString());
+
+    }
 
 }
