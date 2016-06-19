@@ -1,9 +1,13 @@
 package xyz.imdafatboss.sesamebans.api;
 
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import xyz.imdafatboss.sesamebans.Home;
 import xyz.imdafatboss.sesamebans.config.ConfigYML;
+import xyz.imdafatboss.sesamebans.config.MessagesYML;
+import xyz.imdafatboss.sesamebans.utils.Msg;
+import xyz.imdafatboss.sesamebans.utils.TimeUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +21,8 @@ public class ChatAPI {
 
     }
     ConfigYML cfg;
+    MessagesYML msg;
+    DataAPI data;
 
     public List<Player> getStaff(){
 
@@ -56,6 +62,29 @@ public class ChatAPI {
 
             String s = cfg.getStaffChat(message, p);
             o.sendMessage(s);
+
+        }
+
+    }
+
+    public void broadcastBan(Player p, String banner){
+
+        msg = new MessagesYML(plugin);
+        data = new DataAPI(plugin);
+        ConfigurationSection c = data.getBan(p);
+        String reason = c.getString("reason");
+        String date = TimeUtils.getDate(System.currentTimeMillis());
+
+        String s = msg.getBanBroadcast();
+        String s1 = s.replaceAll("%player%", p.getName());
+        String s2 = s1.replaceAll("%reason%", reason);
+        String s3 = s2.replaceAll("%date%", date);
+        String s4 = s3.replaceAll("%banner%", banner);
+        String s5 = Msg.translate(s4);
+
+        for(Player p1 : Bukkit.getOnlinePlayers()){
+
+            p1.sendMessage(msg.prefix() + s5);
 
         }
 
