@@ -5,9 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import xyz.imdafatboss.sesamebans.Home;
-import xyz.imdafatboss.sesamebans.cmd.BanCmd;
-import xyz.imdafatboss.sesamebans.cmd.StaffChatCmd;
-import xyz.imdafatboss.sesamebans.cmd.UnbanCmd;
+import xyz.imdafatboss.sesamebans.cmd.*;
 import xyz.imdafatboss.sesamebans.config.MessagesYML;
 
 import java.util.*;
@@ -35,6 +33,8 @@ public class CommandManager implements CommandExecutor {
         registerCommand(new StaffChatCmd(jp));
         registerCommand(new BanCmd(jp));
         registerCommand(new UnbanCmd(jp));
+        registerCommand(new MuteCmd(jp));
+        registerCommand(new UnmuteCmd(jp));
 
     }
 

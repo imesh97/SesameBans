@@ -75,6 +75,22 @@ public class PlayerAPI {
 
     }
 
+    public boolean isMuted(OfflinePlayer p){
+
+        for(String s : getData().get().getConfigurationSection("mutes").getKeys(false)){
+
+            if(s.equals(p.getUniqueId().toString())){
+
+                return true;
+
+            }
+
+        }
+
+        return false;
+
+    }
+
     public boolean isIPBanned(String ip){
 
         for(String s : getData().get().getStringList("ipbans")){
@@ -153,7 +169,7 @@ public class PlayerAPI {
 
     }
 
-    public void mutePlayer(OfflinePlayer p, String reason){
+    public void muteOfflinePlayer(OfflinePlayer p, String reason){
 
         String uuid = p.getUniqueId().toString();
         FileManager.Config cfg = getData();

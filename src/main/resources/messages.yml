@@ -5,10 +5,16 @@ usage:
     staffchat: '&7/staffchat <message>'
     ban: '&7/ban <player> <reason>'
     unban: '&7/unban <player>'
+    mute: '&7/mute <player> <reason>'
+    unmute: '&7/unmute <player>'
 broadcast:
     ban: '&7[&a%player%&7] has been &c&lbanned by [&a%banner%&7] on [&b%date%&7] for [&c%reason%&7]'
     unban: '&7[&a%player%&7] has been &b&lunbanned by [&a%unbanner%&7] on [&b%date%&7]'
+    mute: '&7[&a%player%&7] has been &c&lmuted by [&a%muter%&7] on [&b%date%&7] for [&c%reason%&7]'
+    unmute: '&7[&a%player%&7] has been &b&lunmuted by [&a%unmuter%&7] on [&b%date%&7]'
 already:
     banned: '&cThis user is already banned.'
+    muted: '&cThis user is already muted.'
 not:
     banned: '&cThis user is not banned.'
+    muted: '&cThis user is not muted.'

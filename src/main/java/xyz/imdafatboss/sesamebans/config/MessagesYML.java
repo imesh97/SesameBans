@@ -65,9 +65,21 @@ public class MessagesYML {
 
     }
 
+    public String getAlreadyMuted(){
+
+        return Msg.translate(getConfig().get().getString("already.muted"));
+
+    }
+
     public String getNotBanned(){
 
         return Msg.translate(getConfig().get().getString("not.banned"));
+
+    }
+
+    public String getNotMuted(){
+
+        return Msg.translate(getConfig().get().getString("not.muted"));
 
     }
 
@@ -86,6 +98,30 @@ public class MessagesYML {
     public String getUnbanBroadcast(){
 
         return Msg.translate(getConfig().get().getString("broadcast.unban"));
+
+    }
+
+    public String getUsageMute(){
+
+        return Msg.translate(getConfig().get().getString("usage.mute"));
+
+    }
+
+    public String getMuteBroadcast(){
+
+        return Msg.translate(getConfig().get().getString("broadcast.mute"));
+
+    }
+
+    public String getUsageUnmute(){
+
+        return Msg.translate(getConfig().get().getString("usage.unmute"));
+
+    }
+
+    public String getUnmuteBroadcast(){
+
+        return Msg.translate(getConfig().get().getString("broadcast.unmute"));
 
     }
 

@@ -151,4 +151,87 @@ public class ChatAPI {
 
     }
 
+    // Muting
+    public void broadcastMute(Player p, String banner){
+
+        msg = new MessagesYML(plugin);
+        data = new DataAPI(plugin);
+        ConfigurationSection c = data.getMute(p);
+        String reason = c.getString("reason");
+        String date = TimeUtils.getDate(System.currentTimeMillis());
+
+        String s = msg.getMuteBroadcast();
+        String s1 = s.replaceAll("%player%", p.getName());
+        String s2 = s1.replaceAll("%reason%", reason);
+        String s3 = s2.replaceAll("%date%", date);
+        String s4 = s3.replaceAll("%muter%", banner);
+        String s5 = Msg.translate(s4);
+
+        for(Player p1 : Bukkit.getOnlinePlayers()){
+
+            p1.sendMessage(msg.prefix() + s5);
+
+        }
+
+    }
+
+    public void broadcastMute(OfflinePlayer p, String banner){
+
+        msg = new MessagesYML(plugin);
+        data = new DataAPI(plugin);
+        ConfigurationSection c = data.getMute(p.getUniqueId());
+        String reason = c.getString("reason");
+        String date = TimeUtils.getDate(System.currentTimeMillis());
+
+        String s = msg.getMuteBroadcast();
+        String s1 = s.replaceAll("%player%", p.getName());
+        String s2 = s1.replaceAll("%reason%", reason);
+        String s3 = s2.replaceAll("%date%", date);
+        String s4 = s3.replaceAll("%muter%", banner);
+        String s5 = Msg.translate(s4);
+
+        for(Player p1 : Bukkit.getOnlinePlayers()){
+
+            p1.sendMessage(msg.prefix() + s5);
+
+        }
+
+    }
+
+    public void broadcastUnmute(Player p, String unbanner){
+
+        msg = new MessagesYML(plugin);
+        String date = TimeUtils.getDate(System.currentTimeMillis());
+
+        String s = msg.getUnmuteBroadcast();
+        String s1 = s.replaceAll("%player%", p.getName());
+        String s2 = s1.replaceAll("%unmuter%", unbanner);
+        String s3 = s2.replaceAll("%date%", date);
+
+        for(Player p1 : Bukkit.getOnlinePlayers()){
+
+            p1.sendMessage(msg.prefix() + s3);
+
+        }
+
+    }
+
+    public void broadcastUnmute(OfflinePlayer p, String unbanner){
+
+        msg = new MessagesYML(plugin);
+        String date = TimeUtils.getDate(System.currentTimeMillis());
+
+        String s = msg.getUnmuteBroadcast();
+        String s1 = s.replaceAll("%player%", p.getName());
+        String s2 = s1.replaceAll("%unmuter%", unbanner);
+        String s3 = s2.replaceAll("%date%", date);
+
+        for(Player p1 : Bukkit.getOnlinePlayers()){
+
+            p1.sendMessage(msg.prefix() + s3);
+
+        }
+
+    }
+
 }

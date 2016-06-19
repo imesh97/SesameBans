@@ -32,6 +32,8 @@ public class Home extends JavaPlugin implements Listener{
         getCommand("staffchat").setExecutor(cmd);
         getCommand("ban").setExecutor(cmd);
         getCommand("unban").setExecutor(cmd);
+        getCommand("mute").setExecutor(cmd);
+        getCommand("unmute").setExecutor(cmd);
 
         String[] scAliases = {"sc", "schat", "staffc"};
         getCommand("staffchat").setAliases(Arrays.asList(scAliases));
@@ -44,6 +46,14 @@ public class Home extends JavaPlugin implements Listener{
         String[] unbanAliases = {"unbanplayer", "unbanp", "uban"};
         getCommand("unban").setAliases(Arrays.asList(unbanAliases));
         getCommand("unban").setDescription("Unban a player");
+
+        String[] muteAliases = {"mutep", "muteplayer"};
+        getCommand("mute").setAliases(Arrays.asList(muteAliases));
+        getCommand("mute").setDescription("Mute a player");
+
+        String[] unmuteAliases = {"unmutep", "unmuteplayer", "umute"};
+        getCommand("unmute").setAliases(Arrays.asList(unmuteAliases));
+        getCommand("unmute").setDescription("Unmute a player");
 
         // Events
         pm.registerEvents(new BanEvents(this), this);

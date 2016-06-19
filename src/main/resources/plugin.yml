@@ -14,3 +14,9 @@ commands:
     unban:
         description: Unban a player
         aliases: [unbanplayer, unbanp, uban]
+    mute:
+        description: Mute a player
+        aliases: [mutep, muteplayer]
+    unmute:
+        description: Unmute a player
+        aliases: [unmutep, unmuteplayer, umute]
