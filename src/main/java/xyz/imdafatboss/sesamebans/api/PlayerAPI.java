@@ -111,7 +111,7 @@ public class PlayerAPI {
 
         String uuid = p.getUniqueId().toString();
         FileManager.Config cfg = getData();
-        String path = "bans" + uuid + ".";
+        String path = "bans." + uuid + ".";
 
         cfg.get().getConfigurationSection("bans").createSection(uuid);
         cfg.get().set(path + "uuid", uuid);
@@ -188,7 +188,7 @@ public class PlayerAPI {
         String uuid = p.getUniqueId().toString();
         FileManager.Config cfg = getData();
 
-        cfg.get().set("unmutes." + uuid, null);
+        cfg.get().set("mutes." + uuid, null);
         cfg.save();
 
     }
