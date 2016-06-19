@@ -7,6 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import xyz.imdafatboss.sesamebans.cmd.mgt.CommandManager;
 import xyz.imdafatboss.sesamebans.config.FileManager;
 import xyz.imdafatboss.sesamebans.events.BanEvents;
+import xyz.imdafatboss.sesamebans.events.MuteEvents;
 
 import java.util.Arrays;
 
@@ -57,6 +58,7 @@ public class Home extends JavaPlugin implements Listener{
 
         // Events
         pm.registerEvents(new BanEvents(this), this);
+        pm.registerEvents(new MuteEvents(this), this);
 
     }
 

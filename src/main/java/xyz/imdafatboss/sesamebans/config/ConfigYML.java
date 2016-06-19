@@ -90,4 +90,24 @@ public class ConfigYML {
 
     }
 
+    public String getMuteScreen(){
+
+        return getConfig().get().getString("screen.mute");
+
+    }
+
+    public String muteScreen(Player p){
+
+        data = new DataAPI(plugin);
+        String s = getBanScreen();
+        ConfigurationSection c = data.getMute(p);
+
+        String s1 = s.replaceAll("%player%", p.getName());
+        String s2 = s1.replaceAll("%reason%", c.getString("reason"));
+        String s3 = Msg.translate(s2);
+
+        return s3;
+
+    }
+
 }
