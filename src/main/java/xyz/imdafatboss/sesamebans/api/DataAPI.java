@@ -1,15 +1,13 @@
 package xyz.imdafatboss.sesamebans.api;
 
-import org.bukkit.entity.Player;
 import xyz.imdafatboss.sesamebans.Home;
 import xyz.imdafatboss.sesamebans.config.ConfigYML;
 import xyz.imdafatboss.sesamebans.config.FileManager;
-import xyz.imdafatboss.sesamebans.utils.Msg;
 
-public class BansAPI {
+public class DataAPI {
 
     Home plugin;
-    public BansAPI(Home instance){
+    public DataAPI(Home instance){
 
         this.plugin = instance;
 
