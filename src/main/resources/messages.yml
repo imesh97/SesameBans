@@ -1,0 +1,14 @@
+no-permission: '&4You do not have permission!'
+player-only-cmd: '&cThis is a player-only command.'
+player-not-exist: '&cThis player does not exist, or has not played on this server.'
+usage:
+    staffchat: '&7/staffchat <message>'
+    ban: '&7/ban <player> <reason>'
+    unban: '&7/unban <player>'
+broadcast:
+    ban: '&7[&a%player%&7] has been &c&lbanned by [&a%banner%&7] on [&b%date%&7] for [&c%reason%&7]'
+    unban: '&7[&a%player%&7] has been &b&lunbanned by [&a%unbanner%&7] on [&b%date%&7]'
+already:
+    banned: '&cThis user is already banned.'
+not:
+    banned: '&cThis user is not banned.'
