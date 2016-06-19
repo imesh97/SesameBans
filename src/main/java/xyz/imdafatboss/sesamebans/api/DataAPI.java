@@ -38,4 +38,16 @@ public class DataAPI {
 
     }
 
+    public ConfigurationSection getMute(Player p){
+
+        return getData().get().getConfigurationSection("mutes" + p.getUniqueId().toString());
+
+    }
+
+    public ConfigurationSection getMute(UUID uuid){
+
+        return getData().get().getConfigurationSection("mutes" + uuid.toString());
+
+    }
+
 }
