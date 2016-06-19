@@ -26,4 +26,22 @@ public class MessagesYML {
 
     }
 
+    public String getUsageBan(){
+
+        return Msg.translate(getConfig().get().getString("usage.ban"));
+
+    }
+
+    public String getPlayerNotExist() {
+
+        return Msg.translate(getConfig().get().getString("player-not-exist"));
+
+    }
+
+    public String getAlreadyBanned(){
+
+        return Msg.translate(getConfig().get().getString("already.banned"));
+
+    }
+
 }

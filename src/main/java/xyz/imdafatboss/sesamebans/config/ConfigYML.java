@@ -1,5 +1,6 @@
 package xyz.imdafatboss.sesamebans.config;
 
+import java.util.*;
 import org.bukkit.entity.Player;
 import xyz.imdafatboss.sesamebans.Home;
 import xyz.imdafatboss.sesamebans.utils.Msg;
@@ -62,6 +63,12 @@ public class ConfigYML {
         String s2 = s1.replaceAll("%message%", message);
 
         return Msg.translate(s2);
+
+    }
+
+    public List<String> getBanScreen(){
+
+        return getConfig().get().getStringList("ban-screen");
 
     }
 
