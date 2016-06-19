@@ -129,6 +129,16 @@ public class PlayerAPI {
 
     }
 
+    public void unbanPlayer(OfflinePlayer p){
+
+        String uuid = p.getUniqueId().toString();
+        FileManager.Config cfg = getData();
+
+        cfg.get().set("bans" + uuid, null);
+        cfg.save();
+
+    }
+
     public void unbanOfflinePlayer(OfflinePlayer p){
 
         String uuid = p.getUniqueId().toString();
