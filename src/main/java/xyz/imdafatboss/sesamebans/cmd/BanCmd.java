@@ -58,9 +58,9 @@ public class BanCmd extends CommandFactory{
                     String msg = sb.toString().trim();
                     String reason = Msg.translate(msg);
 
+                    chat.broadcastBan(tar, p.getName());
                     papi.banPlayer(tar, reason);
                     papi.kickPlayer(tar, reason);
-                    chat.broadcastBan(tar, p.getName());
                     return;
 
                 }
@@ -88,8 +88,8 @@ public class BanCmd extends CommandFactory{
                     String msg = sb.toString().trim();
                     String reason = Msg.translate(msg);
 
-                    papi.banOfflinePlayer(tarp, reason);
                     chat.broadcastBan(tarp, sender.getName());
+                    papi.banOfflinePlayer(tarp, reason);
                     return;
 
                 }
