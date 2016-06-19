@@ -1,5 +1,6 @@
 package xyz.imdafatboss.sesamebans.api;
 
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import xyz.imdafatboss.sesamebans.Home;
 import xyz.imdafatboss.sesamebans.config.ConfigYML;
@@ -75,6 +76,20 @@ public class PlayerAPI {
     }
 
     public void banPlayer(Player p, String reason){
+
+        String uuid = p.getUniqueId().toString();
+        FileManager.Config cfg = getData();
+        String path = uuid + ".";
+
+        cfg.get().getConfigurationSection("bans").createSection(uuid);
+        cfg.get().set(path + "uuid", uuid);
+        cfg.get().set(path + "reason", reason);
+
+        cfg.save();
+
+    }
+
+    public void banOfflinePlayer(OfflinePlayer p, String reason){
 
         String uuid = p.getUniqueId().toString();
         FileManager.Config cfg = getData();
