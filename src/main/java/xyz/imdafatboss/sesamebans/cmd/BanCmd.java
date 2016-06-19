@@ -33,70 +33,131 @@ public class BanCmd extends CommandFactory{
         msg = new MessagesYML(plugin);
         papi = new PlayerAPI(plugin);
         chat = new ChatAPI(plugin);
-        Player p = (Player) sender;
-        if(args.length <= 1){
+        if(sender instanceof Player) {
+            Player p = (Player) sender;
+            if (args.length <= 1) {
 
-            p.sendMessage(cfg.prefix() + msg.getUsageBan());
-            return;
+                p.sendMessage(cfg.prefix() + msg.getUsageBan());
+                return;
 
-        }
+            } else if (args.length >= 2) {
 
-        else if(args.length >= 2){
+                String a1 = args[0];
+                Player tar = Bukkit.getPlayer(a1);
 
-            String a1 = args[0];
-            Player tar = Bukkit.getPlayer(a1);
+                if (tar != null) {
 
-            if(tar != null) {
+                    if (!papi.isBanned(tar)) {
+                        StringBuilder sb = new StringBuilder();
+                        for (int i = 1; i < args.length; i++) {
 
-                if(!papi.isBanned(p)) {
-                    StringBuilder sb = new StringBuilder();
-                    for (int i = 1; i < args.length; i++) {
+                            sb.append(args[i]).append(" ");
 
-                        sb.append(args[i]).append(" ");
+                        }
+                        String msg = sb.toString().trim();
+                        String reason = Msg.translate(msg);
+
+                        papi.banPlayer(tar, reason);
+                        chat.broadcastBan(tar, p.getName());
+                        papi.kickPlayer(tar, cfg.banScreen(tar));
+                        return;
+
+                    } else {
+
+                        p.sendMessage(cfg.prefix() + msg.getAlreadyBanned());
+                        return;
 
                     }
-                    String msg = sb.toString().trim();
-                    String reason = Msg.translate(msg);
 
-                    papi.banPlayer(tar, reason);
-                    chat.broadcastBan(tar, p.getName());
-                    papi.kickPlayer(tar, cfg.banScreen(p));
-                    return;
+                } else {
 
-                }
+                    OfflinePlayer tarp = Bukkit.getOfflinePlayer(a1);
+                    if (tarp != null) {
 
-                else{
+                        StringBuilder sb = new StringBuilder();
+                        for (int i = 1; i < args.length; i++) {
 
-                    p.sendMessage(cfg.prefix() + msg.getAlreadyBanned());
-                    return;
+                            sb.append(args[i]).append(" ");
+
+                        }
+                        String msg = sb.toString().trim();
+                        String reason = Msg.translate(msg);
+
+                        papi.banOfflinePlayer(tarp, reason);
+                        chat.broadcastBan(tarp, sender.getName());
+                        return;
+
+                    } else {
+
+                        sender.sendMessage(cfg.prefix() + msg.getPlayerNotExist());
+                        return;
+
+                    }
 
                 }
 
             }
+        }
+        else{
 
-            else{
+            if (args.length <= 1) {
 
-                OfflinePlayer tarp = Bukkit.getOfflinePlayer(a1);
-                if(tarp != null){
+                sender.sendMessage(cfg.prefix() + msg.getUsageBan());
+                return;
 
-                    StringBuilder sb = new StringBuilder();
-                    for (int i = 1; i < args.length; i++) {
+            } else if (args.length >= 2) {
 
-                        sb.append(args[i]).append(" ");
+                String a1 = args[0];
+                Player tar = Bukkit.getPlayer(a1);
+
+                if (tar != null) {
+
+                    if (!papi.isBanned(tar)) {
+                        StringBuilder sb = new StringBuilder();
+                        for (int i = 1; i < args.length; i++) {
+
+                            sb.append(args[i]).append(" ");
+
+                        }
+                        String msg = sb.toString().trim();
+                        String reason = Msg.translate(msg);
+
+                        papi.banPlayer(tar, reason);
+                        chat.broadcastBan(tar, sender.getName());
+                        papi.kickPlayer(tar, cfg.banScreen(tar));
+                        return;
+
+                    } else {
+
+                        sender.sendMessage(cfg.prefix() + msg.getAlreadyBanned());
+                        return;
 
                     }
-                    String msg = sb.toString().trim();
-                    String reason = Msg.translate(msg);
 
-                    papi.banOfflinePlayer(tarp, reason);
-                    chat.broadcastBan(tarp, sender.getName());
-                    return;
+                } else {
 
-                }
-                else{
+                    OfflinePlayer tarp = Bukkit.getOfflinePlayer(a1);
+                    if (tarp != null) {
 
-                    sender.sendMessage(cfg.prefix() + msg.getPlayerNotExist());
-                    return;
+                        StringBuilder sb = new StringBuilder();
+                        for (int i = 1; i < args.length; i++) {
+
+                            sb.append(args[i]).append(" ");
+
+                        }
+                        String msg = sb.toString().trim();
+                        String reason = Msg.translate(msg);
+
+                        papi.banOfflinePlayer(tarp, reason);
+                        chat.broadcastBan(tarp, sender.getName());
+                        return;
+
+                    } else {
+
+                        sender.sendMessage(cfg.prefix() + msg.getPlayerNotExist());
+                        return;
+
+                    }
 
                 }
 

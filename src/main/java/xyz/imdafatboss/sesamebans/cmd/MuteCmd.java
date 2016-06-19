@@ -33,69 +33,130 @@ public class MuteCmd extends CommandFactory{
         msg = new MessagesYML(plugin);
         papi = new PlayerAPI(plugin);
         chat = new ChatAPI(plugin);
-        Player p = (Player) sender;
-        if(args.length <= 1){
+        if(sender instanceof Player) {
+            Player p = (Player) sender;
+            if (args.length <= 1) {
 
-            p.sendMessage(cfg.prefix() + msg.getUsageMute());
-            return;
+                p.sendMessage(cfg.prefix() + msg.getUsageMute());
+                return;
 
-        }
+            } else if (args.length >= 2) {
 
-        else if(args.length >= 2){
+                String a1 = args[0];
+                Player tar = Bukkit.getPlayer(a1);
 
-            String a1 = args[0];
-            Player tar = Bukkit.getPlayer(a1);
+                if (tar != null) {
 
-            if(tar != null) {
+                    if (!papi.isMuted(tar)) {
+                        StringBuilder sb = new StringBuilder();
+                        for (int i = 1; i < args.length; i++) {
 
-                if(!papi.isMuted(p)) {
-                    StringBuilder sb = new StringBuilder();
-                    for (int i = 1; i < args.length; i++) {
+                            sb.append(args[i]).append(" ");
 
-                        sb.append(args[i]).append(" ");
+                        }
+                        String msg = sb.toString().trim();
+                        String reason = Msg.translate(msg);
+
+                        papi.mutePlayer(tar, reason);
+                        chat.broadcastMute(tar, p.getName());
+                        return;
+
+                    } else {
+
+                        p.sendMessage(cfg.prefix() + msg.getAlreadyMuted());
+                        return;
 
                     }
-                    String msg = sb.toString().trim();
-                    String reason = Msg.translate(msg);
 
-                    papi.mutePlayer(tar, reason);
-                    chat.broadcastMute(tar, p.getName());
-                    return;
+                } else {
 
-                }
+                    OfflinePlayer tarp = Bukkit.getOfflinePlayer(a1);
+                    if (tarp != null) {
 
-                else{
+                        StringBuilder sb = new StringBuilder();
+                        for (int i = 1; i < args.length; i++) {
 
-                    p.sendMessage(cfg.prefix() + msg.getAlreadyMuted());
-                    return;
+                            sb.append(args[i]).append(" ");
+
+                        }
+                        String msg = sb.toString().trim();
+                        String reason = Msg.translate(msg);
+
+                        papi.muteOfflinePlayer(tarp, reason);
+                        chat.broadcastMute(tarp, sender.getName());
+                        return;
+
+                    } else {
+
+                        sender.sendMessage(cfg.prefix() + msg.getPlayerNotExist());
+                        return;
+
+                    }
 
                 }
 
             }
 
-            else{
+        }
+        else{
 
-                OfflinePlayer tarp = Bukkit.getOfflinePlayer(a1);
-                if(tarp != null){
+            if (args.length <= 1) {
 
-                    StringBuilder sb = new StringBuilder();
-                    for (int i = 1; i < args.length; i++) {
+                sender.sendMessage(cfg.prefix() + msg.getUsageMute());
+                return;
 
-                        sb.append(args[i]).append(" ");
+            } else if (args.length >= 2) {
+
+                String a1 = args[0];
+                Player tar = Bukkit.getPlayer(a1);
+
+                if (tar != null) {
+
+                    if (!papi.isMuted(tar)) {
+                        StringBuilder sb = new StringBuilder();
+                        for (int i = 1; i < args.length; i++) {
+
+                            sb.append(args[i]).append(" ");
+
+                        }
+                        String msg = sb.toString().trim();
+                        String reason = Msg.translate(msg);
+
+                        papi.mutePlayer(tar, reason);
+                        chat.broadcastMute(tar, sender.getName());
+                        return;
+
+                    } else {
+
+                        sender.sendMessage(cfg.prefix() + msg.getAlreadyMuted());
+                        return;
 
                     }
-                    String msg = sb.toString().trim();
-                    String reason = Msg.translate(msg);
 
-                    papi.muteOfflinePlayer(tarp, reason);
-                    chat.broadcastMute(tarp, sender.getName());
-                    return;
+                } else {
 
-                }
-                else{
+                    OfflinePlayer tarp = Bukkit.getOfflinePlayer(a1);
+                    if (tarp != null) {
 
-                    sender.sendMessage(cfg.prefix() + msg.getPlayerNotExist());
-                    return;
+                        StringBuilder sb = new StringBuilder();
+                        for (int i = 1; i < args.length; i++) {
+
+                            sb.append(args[i]).append(" ");
+
+                        }
+                        String msg = sb.toString().trim();
+                        String reason = Msg.translate(msg);
+
+                        papi.muteOfflinePlayer(tarp, reason);
+                        chat.broadcastMute(tarp, sender.getName());
+                        return;
+
+                    } else {
+
+                        sender.sendMessage(cfg.prefix() + msg.getPlayerNotExist());
+                        return;
+
+                    }
 
                 }
 
