@@ -6,6 +6,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import xyz.imdafatboss.sesamebans.Home;
 import xyz.imdafatboss.sesamebans.cmd.StaffChatCmd;
+import xyz.imdafatboss.sesamebans.config.MessagesYML;
 
 import java.util.*;
 
@@ -17,6 +18,7 @@ public class CommandManager implements CommandExecutor {
         this.plugin = instance;
 
     }
+    MessagesYML msg;
 
     private List<CommandFactory> commands = new ArrayList<CommandFactory>();
 
@@ -35,6 +37,7 @@ public class CommandManager implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
+        msg = new MessagesYML(plugin);
         for (CommandFactory cmds : commands) {
 
             if (cmds.getName().equalsIgnoreCase(cmd.getName())){
@@ -46,6 +49,12 @@ public class CommandManager implements CommandExecutor {
                         if (sender.hasPermission(cmds.getPermission())) {
 
                             cmds.execute(sender, args);
+
+                        }
+
+                        else{
+
+                            sender.sendMessage(msg.prefix() + msg.getNoPerm());
 
                         }
 
@@ -64,6 +73,12 @@ public class CommandManager implements CommandExecutor {
                     if(cmds.allowsConsole()){
 
                         cmds.execute(sender, args);
+
+                    }
+
+                    else{
+
+                        sender.sendMessage(msg.prefix() + msg.getPlayerOnlyCmd());
 
                     }
 
