@@ -65,9 +65,27 @@ public class MessagesYML {
 
     }
 
+    public String getNotBanned(){
+
+        return Msg.translate(getConfig().get().getString("not.banned"));
+
+    }
+
     public String getBanBroadcast(){
 
         return Msg.translate(getConfig().get().getString("broadcast.ban"));
+
+    }
+
+    public String getUsageUnban(){
+
+        return Msg.translate(getConfig().get().getString("usage.unban"));
+
+    }
+
+    public String getUnbanBroadcast(){
+
+        return Msg.translate(getConfig().get().getString("broadcast.unban"));
 
     }
 
