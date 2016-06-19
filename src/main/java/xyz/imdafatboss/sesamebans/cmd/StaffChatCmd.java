@@ -40,7 +40,7 @@ public class StaffChatCmd extends CommandFactory{
             else if(args.length >= 1){
 
                 StringBuilder sb = new StringBuilder();
-                for(int i = 0; i > args.length; i++){
+                for(int i = 0; i < args.length; i++){
 
                     sb.append(args[i]).append(" ");
 
@@ -65,7 +65,7 @@ public class StaffChatCmd extends CommandFactory{
             else if(args.length >= 1){
 
                 StringBuilder sb = new StringBuilder();
-                for(int i = 0; i > args.length; i++){
+                for(int i = 0; i < args.length; i++){
 
                     sb.append(args[i]).append(" ");
 
