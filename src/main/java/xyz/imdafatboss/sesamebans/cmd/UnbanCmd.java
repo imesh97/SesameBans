@@ -68,7 +68,7 @@ public class UnbanCmd extends CommandFactory{
 
                         if(papi.isBanned(tar)){
 
-                            papi.unbanPlayer(tarp);
+                            papi.unbanOfflinePlayer(tarp);
                             chat.broadcastUnban(tarp, p.getName());
                             return;
 
@@ -135,7 +135,7 @@ public class UnbanCmd extends CommandFactory{
 
                         if(papi.isBanned(tarp)){
 
-                            papi.unbanPlayer(tarp);
+                            papi.unbanOfflinePlayer(tarp);
                             chat.broadcastUnban(tarp, p.getName());
                             return;
 

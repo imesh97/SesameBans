@@ -129,16 +129,6 @@ public class PlayerAPI {
 
     }
 
-    public void unbanPlayer(OfflinePlayer p){
-
-        String uuid = p.getUniqueId().toString();
-        FileManager.Config cfg = getData();
-
-        cfg.get().set("bans." + uuid, null);
-        cfg.save();
-
-    }
-
     public void unbanOfflinePlayer(OfflinePlayer p){
 
         String uuid = p.getUniqueId().toString();
@@ -159,6 +149,40 @@ public class PlayerAPI {
         cfg.get().set(path + "uuid", uuid);
         cfg.get().set(path + "reason", reason);
 
+        cfg.save();
+
+    }
+
+    public void mutePlayer(OfflinePlayer p, String reason){
+
+        String uuid = p.getUniqueId().toString();
+        FileManager.Config cfg = getData();
+        String path = "mutes." + uuid + ".";
+
+        cfg.get().getConfigurationSection("mutes").createSection(uuid);
+        cfg.get().set(path + "uuid", uuid);
+        cfg.get().set(path + "reason", reason);
+
+        cfg.save();
+
+    }
+
+    public void unmutePlayer(Player p){
+
+        String uuid = p.getUniqueId().toString();
+        FileManager.Config cfg = getData();
+
+        cfg.get().set("unmutes." + uuid, null);
+        cfg.save();
+
+    }
+
+    public void unmuteOfflinePlayer(OfflinePlayer p){
+
+        String uuid = p.getUniqueId().toString();
+        FileManager.Config cfg = getData();
+
+        cfg.get().set("mutes." + uuid, null);
         cfg.save();
 
     }
