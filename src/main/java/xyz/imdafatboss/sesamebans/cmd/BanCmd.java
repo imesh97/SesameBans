@@ -60,7 +60,7 @@ public class BanCmd extends CommandFactory{
 
                     chat.broadcastBan(tar, p.getName());
                     papi.banPlayer(tar, reason);
-                    papi.kickPlayer(tar, reason);
+                    papi.kickPlayer(tar, cfg.banScreen(p));
                     return;
 
                 }
