@@ -95,7 +95,7 @@ public class PlayerAPI {
 
         String uuid = p.getUniqueId().toString();
         FileManager.Config cfg = getData();
-        String path = uuid + ".";
+        String path = "bans" + uuid + ".";
 
         cfg.get().getConfigurationSection("bans").createSection(uuid);
         cfg.get().set(path + "uuid", uuid);
