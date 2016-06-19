@@ -133,7 +133,7 @@ public class UnbanCmd extends CommandFactory{
                     OfflinePlayer tarp = Bukkit.getOfflinePlayer(a1);
                     if(tarp != null){
 
-                        if(papi.isBanned(tar)){
+                        if(papi.isBanned(tarp)){
 
                             papi.unbanPlayer(tarp);
                             chat.broadcastUnban(tarp, p.getName());
