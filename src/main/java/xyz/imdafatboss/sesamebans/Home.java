@@ -1,9 +1,12 @@
 package xyz.imdafatboss.sesamebans;
 
+import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import xyz.imdafatboss.sesamebans.cmd.mgt.CommandManager;
 import xyz.imdafatboss.sesamebans.config.FileManager;
+import xyz.imdafatboss.sesamebans.events.BanEvents;
 
 import java.util.Arrays;
 
@@ -22,6 +25,7 @@ public class Home extends JavaPlugin implements Listener{
 
         // Initialize
         cmd = new CommandManager(this);
+        PluginManager pm = Bukkit.getServer().getPluginManager();
 
         // Manage all commands.
         cmd.registerCommands(this);
@@ -40,6 +44,9 @@ public class Home extends JavaPlugin implements Listener{
         String[] unbanAliases = {"unbanplayer", "unbanp"};
         getCommand("unban").setAliases(Arrays.asList(unbanAliases));
         getCommand("unban").setDescription("Unban a player");
+
+        // Events
+        pm.registerEvents(new BanEvents(this), this);
 
     }
 
