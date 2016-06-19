@@ -109,7 +109,7 @@ public class PlayerAPI {
 
         String uuid = p.getUniqueId().toString();
         FileManager.Config cfg = getData();
-        String path = "bans" + uuid + ".";
+        String path = "bans." + uuid + ".";
 
         cfg.get().getConfigurationSection("bans").createSection(uuid);
         cfg.get().set(path + "uuid", uuid);
@@ -124,7 +124,7 @@ public class PlayerAPI {
         String uuid = p.getUniqueId().toString();
         FileManager.Config cfg = getData();
 
-        cfg.get().set("bans" + uuid, null);
+        cfg.get().set("bans." + uuid, null);
         cfg.save();
 
     }
@@ -134,7 +134,7 @@ public class PlayerAPI {
         String uuid = p.getUniqueId().toString();
         FileManager.Config cfg = getData();
 
-        cfg.get().set("bans" + uuid, null);
+        cfg.get().set("bans." + uuid, null);
         cfg.save();
 
     }
@@ -144,7 +144,7 @@ public class PlayerAPI {
         String uuid = p.getUniqueId().toString();
         FileManager.Config cfg = getData();
 
-        cfg.get().set("bans" + uuid, null);
+        cfg.get().set("bans." + uuid, null);
         cfg.save();
 
     }
@@ -153,7 +153,7 @@ public class PlayerAPI {
 
         String uuid = p.getUniqueId().toString();
         FileManager.Config cfg = getData();
-        String path = "mutes" + uuid + ".";
+        String path = "mutes." + uuid + ".";
 
         cfg.get().getConfigurationSection("mutes").createSection(uuid);
         cfg.get().set(path + "uuid", uuid);
@@ -169,7 +169,7 @@ public class PlayerAPI {
         long time = System.currentTimeMillis() + t;
         String uuid = p.getUniqueId().toString();
         FileManager.Config cfg = getData();
-        String path = "tempbans" + uuid + ".";
+        String path = "tempbans." + uuid + ".";
 
         cfg.get().getConfigurationSection("tempbans").createSection(uuid);
         cfg.get().set(path + "uuid", uuid);
@@ -186,7 +186,7 @@ public class PlayerAPI {
         long time = System.currentTimeMillis() + t;
         String uuid = p.getUniqueId().toString();
         FileManager.Config cfg = getData();
-        String path = "tempmutes" + uuid + ".";
+        String path = "tempmutes." + uuid + ".";
 
         cfg.get().getConfigurationSection("tempmutes").createSection(uuid);
         cfg.get().set(path + "uuid", uuid);
