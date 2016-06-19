@@ -1,0 +1,13 @@
+name: SesameBans
+main: xyz.imdafatboss.sesamebans.Home
+version: 1.0
+author: imdafatboss
+description: A ban management plugin
+
+commands:
+    staffchat:
+        description: Communicate with the other staff on the server
+    ban:
+        description: Ban a player
+    unban:
+        description: Unban a player
