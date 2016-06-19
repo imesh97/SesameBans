@@ -115,4 +115,40 @@ public class ChatAPI {
 
     }
 
+    public void broadcastUnban(Player p, String unbanner){
+
+        msg = new MessagesYML(plugin);
+        String date = TimeUtils.getDate(System.currentTimeMillis());
+
+        String s = msg.getUnbanBroadcast();
+        String s1 = s.replaceAll("%player%", p.getName());
+        String s2 = s1.replaceAll("%unbanner%", unbanner);
+        String s3 = s2.replaceAll("%date%", date);
+
+        for(Player p1 : Bukkit.getOnlinePlayers()){
+
+            p1.sendMessage(msg.prefix() + s3);
+
+        }
+
+    }
+
+    public void broadcastUnban(OfflinePlayer p, String unbanner){
+
+        msg = new MessagesYML(plugin);
+        String date = TimeUtils.getDate(System.currentTimeMillis());
+
+        String s = msg.getUnbanBroadcast();
+        String s1 = s.replaceAll("%player%", p.getName());
+        String s2 = s1.replaceAll("%unbanner%", unbanner);
+        String s3 = s2.replaceAll("%date%", date);
+
+        for(Player p1 : Bukkit.getOnlinePlayers()){
+
+            p1.sendMessage(msg.prefix() + s3);
+
+        }
+
+    }
+
 }
