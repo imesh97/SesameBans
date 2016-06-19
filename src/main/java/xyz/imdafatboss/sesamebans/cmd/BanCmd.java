@@ -89,13 +89,13 @@ public class BanCmd extends CommandFactory{
                     String reason = Msg.translate(msg);
 
                     papi.banOfflinePlayer(tarp, reason);
-                    chat.broadcastBan(tarp, p.getName());
+                    chat.broadcastBan(tarp, sender.getName());
                     return;
 
                 }
                 else{
 
-                    p.sendMessage(cfg.prefix() + msg.getPlayerNotExist());
+                    sender.sendMessage(cfg.prefix() + msg.getPlayerNotExist());
                     return;
 
                 }
