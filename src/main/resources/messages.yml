@@ -8,6 +8,7 @@ usage:
     unban: '&7/unban <player>'
     mute: '&7/mute <player> <reason>'
     unmute: '&7/unmute <player>'
+    kick: '&7/kick <player> [reason]'
 broadcast:
     ban: '&7[&a%player%&7] has been &c&lbanned by [&a%banner%&7] on [&b%date%&7] for [&c%reason%&7]'
     unban: '&7[&a%player%&7] has been &b&lunbanned by [&a%unbanner%&7] on [&b%date%&7]'
