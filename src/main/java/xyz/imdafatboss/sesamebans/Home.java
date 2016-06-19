@@ -41,7 +41,7 @@ public class Home extends JavaPlugin implements Listener{
         getCommand("ban").setAliases(Arrays.asList(banAliases));
         getCommand("ban").setDescription("Ban a player");
 
-        String[] unbanAliases = {"unbanplayer", "unbanp"};
+        String[] unbanAliases = {"unbanplayer", "unbanp", "uban"};
         getCommand("unban").setAliases(Arrays.asList(unbanAliases));
         getCommand("unban").setDescription("Unban a player");
 

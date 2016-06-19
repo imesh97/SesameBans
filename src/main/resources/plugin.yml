@@ -7,7 +7,10 @@ description: A ban management plugin
 commands:
     staffchat:
         description: Communicate with the other staff on the server
+        aliases: [sc, schat, staffc]
     ban:
         description: Ban a player
+        aliases: [banplayer, banp]
     unban:
         description: Unban a player
+        aliases: [unbanplayer, unbanp, uban]
