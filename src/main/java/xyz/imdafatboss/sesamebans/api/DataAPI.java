@@ -28,25 +28,25 @@ public class DataAPI {
 
     public ConfigurationSection getBan(Player p){
 
-        return getData().get().getConfigurationSection("bans" + p.getUniqueId().toString());
+        return getData().get().getConfigurationSection("bans." + p.getUniqueId().toString());
 
     }
 
     public ConfigurationSection getBan(UUID uuid){
 
-        return getData().get().getConfigurationSection("bans" + uuid.toString());
+        return getData().get().getConfigurationSection("bans." + uuid.toString());
 
     }
 
     public ConfigurationSection getMute(Player p){
 
-        return getData().get().getConfigurationSection("mutes" + p.getUniqueId().toString());
+        return getData().get().getConfigurationSection("mutes." + p.getUniqueId().toString());
 
     }
 
     public ConfigurationSection getMute(UUID uuid){
 
-        return getData().get().getConfigurationSection("mutes" + uuid.toString());
+        return getData().get().getConfigurationSection("mutes." + uuid.toString());
 
     }
 
