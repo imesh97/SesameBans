@@ -1,6 +1,7 @@
 package xyz.imdafatboss.sesamebans.api;
 
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import xyz.imdafatboss.sesamebans.Home;
@@ -11,6 +12,7 @@ import xyz.imdafatboss.sesamebans.utils.TimeUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class ChatAPI {
 
@@ -72,6 +74,29 @@ public class ChatAPI {
         msg = new MessagesYML(plugin);
         data = new DataAPI(plugin);
         ConfigurationSection c = data.getBan(p);
+        String reason = c.getString("reason");
+        String date = TimeUtils.getDate(System.currentTimeMillis());
+
+        String s = msg.getBanBroadcast();
+        String s1 = s.replaceAll("%player%", p.getName());
+        String s2 = s1.replaceAll("%reason%", reason);
+        String s3 = s2.replaceAll("%date%", date);
+        String s4 = s3.replaceAll("%banner%", banner);
+        String s5 = Msg.translate(s4);
+
+        for(Player p1 : Bukkit.getOnlinePlayers()){
+
+            p1.sendMessage(msg.prefix() + s5);
+
+        }
+
+    }
+
+    public void broadcastBan(OfflinePlayer p, String banner){
+
+        msg = new MessagesYML(plugin);
+        data = new DataAPI(plugin);
+        ConfigurationSection c = data.getBan(p.getUniqueId());
         String reason = c.getString("reason");
         String date = TimeUtils.getDate(System.currentTimeMillis());
 

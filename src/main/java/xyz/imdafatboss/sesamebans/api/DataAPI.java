@@ -6,6 +6,8 @@ import xyz.imdafatboss.sesamebans.Home;
 import xyz.imdafatboss.sesamebans.config.ConfigYML;
 import xyz.imdafatboss.sesamebans.config.FileManager;
 
+import java.util.UUID;
+
 public class DataAPI {
 
     Home plugin;
@@ -27,6 +29,12 @@ public class DataAPI {
     public ConfigurationSection getBan(Player p){
 
         return getData().get().getConfigurationSection("bans" + p.getUniqueId().toString());
+
+    }
+
+    public ConfigurationSection getBan(UUID uuid){
+
+        return getData().get().getConfigurationSection("bans" + uuid.toString());
 
     }
 
