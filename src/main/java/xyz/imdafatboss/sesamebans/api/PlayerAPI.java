@@ -2,7 +2,10 @@ package xyz.imdafatboss.sesamebans.api;
 
 import org.bukkit.entity.Player;
 import xyz.imdafatboss.sesamebans.Home;
+import xyz.imdafatboss.sesamebans.config.ConfigYML;
 import xyz.imdafatboss.sesamebans.config.FileManager;
+import xyz.imdafatboss.sesamebans.config.MessagesYML;
+import xyz.imdafatboss.sesamebans.utils.Msg;
 
 public class PlayerAPI {
 
@@ -13,6 +16,8 @@ public class PlayerAPI {
 
     }
     FileManager fm;
+    ConfigYML cfg;
+    MessagesYML msg;
 
     public FileManager.Config getData(){
 
@@ -128,6 +133,22 @@ public class PlayerAPI {
         cfg.get().set(path + "date", time);
 
         cfg.save();
+
+    }
+
+    public void kickPlayer(Player p, String reason){
+
+        String s = Msg.translate(reason);
+        p.kickPlayer(s);
+
+    }
+
+    public void kickPlayer(Player p){
+
+        cfg = new ConfigYML(plugin);
+        String s = cfg.prefix() + cfg.getDefaultKick();
+
+        p.kickPlayer(s);
 
     }
 

@@ -24,20 +24,6 @@ public class BansAPI {
 
     }
 
-    public void kickPlayer(Player p, String reason){
 
-        String s = Msg.translate(reason);
-        p.kickPlayer(s);
-
-    }
-
-    public void kickPlayer(Player p){
-
-        cfg = new ConfigYML(plugin);
-        String s = cfg.prefix() + cfg.getDefaultKick();
-
-        p.kickPlayer(s);
-
-    }
 
 }
