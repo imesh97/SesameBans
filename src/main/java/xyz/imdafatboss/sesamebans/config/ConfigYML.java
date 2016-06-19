@@ -72,7 +72,7 @@ public class ConfigYML {
 
     public String getBanScreen(){
 
-        return getConfig().get().getString("ban-screen");
+        return getConfig().get().getString("screen.ban");
 
     }
 
