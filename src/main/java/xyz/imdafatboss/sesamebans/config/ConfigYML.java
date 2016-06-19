@@ -99,7 +99,7 @@ public class ConfigYML {
     public String muteScreen(Player p){
 
         data = new DataAPI(plugin);
-        String s = getBanScreen();
+        String s = getMuteScreen();
         ConfigurationSection c = data.getMute(p);
 
         String s1 = s.replaceAll("%player%", p.getName());
