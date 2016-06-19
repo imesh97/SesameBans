@@ -43,6 +43,22 @@ public class PlayerAPI {
 
     }
 
+    public boolean isBanned(OfflinePlayer p){
+
+        for(String s : getData().get().getConfigurationSection("bans").getKeys(false)){
+
+            if(s.equals(p.getUniqueId().toString())){
+
+                return true;
+
+            }
+
+        }
+
+        return false;
+
+    }
+
     public boolean isMuted(Player p){
 
         for(String s : getData().get().getConfigurationSection("mutes").getKeys(false)){
