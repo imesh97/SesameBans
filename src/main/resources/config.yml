@@ -7,3 +7,4 @@ sc-format: '&bSTAFF &7> &b&l%player% &f>> %message%'
 
 screen:
     ban: '&cYou &7(%player%)&c are banned from this server for: &7[&a%reason%&7]&c. Please appeal on &bwww.site.com'
+    mute: '&cYou &7(%player%)&c are muted on this server for: &7[&a%reason%&7]&c. Please appeal on &bwww.site.com'
