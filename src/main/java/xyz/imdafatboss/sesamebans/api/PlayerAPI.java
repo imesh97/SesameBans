@@ -19,6 +19,7 @@ public class PlayerAPI {
     FileManager fm;
     ConfigYML cfg;
     MessagesYML msg;
+    DataAPI data;
 
     public FileManager.Config getData(){
 
@@ -98,6 +99,29 @@ public class PlayerAPI {
             if(s.equals(ip)){
 
                 return true;
+
+            }
+
+        }
+
+        return false;
+
+    }
+
+    public boolean isTempbanned(Player p){
+
+        data = new DataAPI(plugin);
+        for(String s : getData().get().getConfigurationSection("tempbans").getKeys(false)){
+
+            if(s.equals(p.getUniqueId().toString())){
+
+                long time = data.getTempban(p).getLong("date");
+                if(System.currentTimeMillis() < time){
+
+                    return true;
+
+                }
+                return false;
 
             }
 
@@ -204,6 +228,23 @@ public class PlayerAPI {
     }
 
     public void tempBanPlayer(Player p, int sec, String reason){
+
+        long t = sec * 1000L;
+        long time = System.currentTimeMillis() + t;
+        String uuid = p.getUniqueId().toString();
+        FileManager.Config cfg = getData();
+        String path = "tempbans." + uuid + ".";
+
+        cfg.get().getConfigurationSection("tempbans").createSection(uuid);
+        cfg.get().set(path + "uuid", uuid);
+        cfg.get().set(path + "reason", reason);
+        cfg.get().set(path + "date", time);
+
+        cfg.save();
+
+    }
+
+    public void tempBanPlayer(OfflinePlayer p, int sec, String reason){
 
         long t = sec * 1000L;
         long time = System.currentTimeMillis() + t;

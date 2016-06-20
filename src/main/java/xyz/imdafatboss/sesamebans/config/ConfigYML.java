@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import xyz.imdafatboss.sesamebans.Home;
 import xyz.imdafatboss.sesamebans.api.DataAPI;
 import xyz.imdafatboss.sesamebans.utils.Msg;
+import xyz.imdafatboss.sesamebans.utils.TimeUtils;
 
 public class ConfigYML {
 
@@ -87,6 +88,28 @@ public class ConfigYML {
         String s3 = Msg.translate(s2);
 
         return s3;
+
+    }
+
+    public String getTempbanScreen(){
+
+        return getConfig().get().getString("screen.tempban");
+
+    }
+
+    public String tempbanScreen(Player p){
+
+        data = new DataAPI(plugin);
+        String s = getTempbanScreen();
+        ConfigurationSection c = data.getTempban(p);
+        String time = TimeUtils.get(c.getLong("date"));
+
+        String s1 = s.replaceAll("%player%", p.getName());
+        String s2 = s1.replaceAll("%reason%", c.getString("reason"));
+        String s3 = s2.replaceAll("%time%", time);
+        String s4 = Msg.translate(s3);
+
+        return s4;
 
     }
 

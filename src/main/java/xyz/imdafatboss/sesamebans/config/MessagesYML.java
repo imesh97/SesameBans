@@ -47,6 +47,12 @@ public class MessagesYML {
 
     }
 
+    public String getSpecifyProperTime(){
+
+        return Msg.translate(getConfig().get().getString("specify-proper-time"));
+
+    }
+
     public String getUsageSc(){
 
         return Msg.translate(getConfig().get().getString("usage.staffchat"));
@@ -140,6 +146,18 @@ public class MessagesYML {
     public String getKickBroadcast(){
 
         return Msg.translate(getConfig().get().getString("broadcast.kick"));
+
+    }
+
+    public String getUsageTempBan(){
+
+        return Msg.translate(getConfig().get().getString("usage.tempban"));
+
+    }
+
+    public String getTempbanBroadcast(){
+
+        return Msg.translate(getConfig().get().getString("broadcast.tempban"));
 
     }
 

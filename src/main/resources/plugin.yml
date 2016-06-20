@@ -23,3 +23,6 @@ commands:
     kick:
         description: Kick a player
         aliases: [kickp, kickplayer]
+    tempban:
+        description: Tempban a player
+        aliases: [tempbanp, tempbanplayer, bantemp]

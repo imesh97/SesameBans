@@ -50,4 +50,16 @@ public class DataAPI {
 
     }
 
+    public ConfigurationSection getTempban(Player p){
+
+        return getData().get().getConfigurationSection("tempbans." + p.getUniqueId().toString());
+
+    }
+
+    public ConfigurationSection getTempban(UUID uuid){
+
+        return getData().get().getConfigurationSection("tempbans." + uuid.toString());
+
+    }
+
 }

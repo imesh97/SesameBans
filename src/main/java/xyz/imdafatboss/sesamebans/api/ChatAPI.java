@@ -266,4 +266,59 @@ public class ChatAPI {
 
     }
 
+    // Tempbanning
+    public void broadcastTempban(Player p, String tempbanner){
+
+        msg = new MessagesYML(plugin);
+        data = new DataAPI(plugin);
+        String now = TimeUtils.getDate(System.currentTimeMillis());
+        ConfigurationSection c = data.getTempban(p);
+        String reason = c.getString("reason");
+        long t = c.getLong("date");
+        String time = TimeUtils.get(t);
+
+        String s = msg.getTempbanBroadcast();
+        String s1 = s.replaceAll("%player%", p.getName());
+        String s2 = s1.replaceAll("%tempbanner%", tempbanner);
+        String s3 = s2.replaceAll("%date%", now);
+        String s4 = s3.replaceAll("%time%", time);
+        String s5 = s4.replaceAll("%reason%", reason);
+        String s6 = Msg.translate(s5);
+
+        for(Player p1 : Bukkit.getOnlinePlayers()){
+
+            p1.sendMessage(msg.prefix() + s6);
+
+        }
+        plugin.getLogger().info(s6);
+
+    }
+
+    public void broadcastTempban(OfflinePlayer p, String tempbanner){
+
+        msg = new MessagesYML(plugin);
+        data = new DataAPI(plugin);
+        String now = TimeUtils.getDate(System.currentTimeMillis());
+        ConfigurationSection c = data.getTempban(p.getUniqueId());
+        String reason = c.getString("reason");
+        long t = c.getLong("date");
+        String time = TimeUtils.get(t);
+
+        String s = msg.getTempbanBroadcast();
+        String s1 = s.replaceAll("%player%", p.getName());
+        String s2 = s1.replaceAll("%tempbanner%", tempbanner);
+        String s3 = s2.replaceAll("%date%", now);
+        String s4 = s3.replaceAll("%time%", time);
+        String s5 = s4.replaceAll("%reason%", reason);
+        String s6 = Msg.translate(s5);
+
+        for(Player p1 : Bukkit.getOnlinePlayers()){
+
+            p1.sendMessage(msg.prefix() + s6);
+
+        }
+        plugin.getLogger().info(s6);
+
+    }
+
 }
