@@ -138,7 +138,7 @@ public class PlayerAPI {
 
             if(s.equals(p.getUniqueId().toString())){
 
-                long time = data.getTempban(p).getLong("date");
+                long time = data.getTempmute(p).getLong("date");
                 if(System.currentTimeMillis() < time){
 
                     return true;

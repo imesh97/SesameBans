@@ -32,7 +32,7 @@ public class TempmuteEvents implements Listener{
         if(papi.isTempmuted(p)){
 
             e.setCancelled(true);
-            String banscreen = cfg.tempbanScreen(p);
+            String banscreen = cfg.tempmuteScreen(p);
             p.sendMessage(cfg.prefix() + banscreen);
 
             data.getData().get().set("tempmutes." + p.getUniqueId().toString(), null);
