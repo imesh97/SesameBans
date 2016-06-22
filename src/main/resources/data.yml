@@ -15,3 +15,8 @@ tempbans:
         uuid: 'c03f1ddc-af6a-407e-8944-d82f6fcbf595'
         reason: '&cThis is just a test, on a locked account.'
         time: 3656
+tempmutes:
+    c03f1ddc-af6a-407e-8944-d82f6fcbf595:
+        uuid: 'c03f1ddc-af6a-407e-8944-d82f6fcbf595'
+        reason: '&cThis is just a test, on a locked account.'
+        time: 3657
