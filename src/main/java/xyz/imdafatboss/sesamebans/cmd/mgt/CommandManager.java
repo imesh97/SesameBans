@@ -37,6 +37,7 @@ public class CommandManager implements CommandExecutor {
         registerCommand(new UnmuteCmd(jp));
         registerCommand(new KickCmd(jp));
         registerCommand(new TempBanCmd(jp));
+        registerCommand(new TempMuteCmd(jp));
 
     }
 
