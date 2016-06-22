@@ -64,7 +64,6 @@ public class TempMuteCmd extends CommandFactory{
 
                     papi.tempMutePlayer(tar, sec, reason);
                     chat.broadcastTempmute(tar, sender.getName());
-                    papi.kickPlayer(tar, cfg.tempmuteScreen(tar));
                     return;
 
                 }

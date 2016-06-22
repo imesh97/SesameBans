@@ -29,7 +29,7 @@ public class TempmuteEvents implements Listener{
         cfg = new ConfigYML(plugin);
         data = new DataAPI(plugin);
         Player p = e.getPlayer();
-        if(papi.isTempbanned(p)){
+        if(papi.isTempmuted(p)){
 
             e.setCancelled(true);
             String banscreen = cfg.tempbanScreen(p);
