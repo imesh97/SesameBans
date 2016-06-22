@@ -55,7 +55,7 @@ public class TempBanCmd extends CommandFactory{
                     StringBuilder sb = new StringBuilder();
                     for(int i = 2; i < args.length; i++){
 
-                        sb.append(args[0]).append(" ");
+                        sb.append(args[i]).append(" ");
 
                     }
                     String msg = sb.toString().trim();
