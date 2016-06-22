@@ -8,6 +8,7 @@ import xyz.imdafatboss.sesamebans.Home;
 import xyz.imdafatboss.sesamebans.api.ChatAPI;
 import xyz.imdafatboss.sesamebans.api.PlayerAPI;
 import xyz.imdafatboss.sesamebans.cmd.mgt.CommandFactory;
+import xyz.imdafatboss.sesamebans.config.ConfigYML;
 import xyz.imdafatboss.sesamebans.config.MessagesYML;
 import xyz.imdafatboss.sesamebans.utils.IntUtils;
 import xyz.imdafatboss.sesamebans.utils.Msg;
@@ -24,6 +25,7 @@ public class TempBanCmd extends CommandFactory{
     MessagesYML msg;
     PlayerAPI papi;
     ChatAPI chat;
+    ConfigYML cfg;
 
     @Override
     public void execute(CommandSender sender, String[] args){
@@ -31,6 +33,7 @@ public class TempBanCmd extends CommandFactory{
         msg = new MessagesYML(plugin);
         papi = new PlayerAPI(plugin);
         chat = new ChatAPI(plugin);
+        cfg = new ConfigYML(plugin);
         if(args.length < 3){
 
             sender.sendMessage(msg.prefix() + msg.getUsageTempBan());
@@ -60,6 +63,8 @@ public class TempBanCmd extends CommandFactory{
 
                     papi.tempBanPlayer(tar, sec, reason);
                     chat.broadcastTempban(tar, sender.getName());
+                    papi.kickPlayer(tar, cfg.tempbanScreen(tar));
+                    return;
 
                 }
                 else{
