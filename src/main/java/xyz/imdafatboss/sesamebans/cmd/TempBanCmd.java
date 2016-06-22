@@ -29,6 +29,8 @@ public class TempBanCmd extends CommandFactory{
     public void execute(CommandSender sender, String[] args){
 
         msg = new MessagesYML(plugin);
+        papi = new PlayerAPI(plugin);
+        chat = new ChatAPI(plugin);
         if(args.length < 3){
 
             sender.sendMessage(msg.prefix() + msg.getUsageTempBan());
