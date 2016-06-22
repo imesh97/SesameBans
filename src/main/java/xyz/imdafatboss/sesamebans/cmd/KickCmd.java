@@ -4,8 +4,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import xyz.imdafatboss.sesamebans.Home;
+import xyz.imdafatboss.sesamebans.api.ChatAPI;
 import xyz.imdafatboss.sesamebans.api.PlayerAPI;
 import xyz.imdafatboss.sesamebans.cmd.mgt.CommandFactory;
+import xyz.imdafatboss.sesamebans.config.ConfigYML;
 import xyz.imdafatboss.sesamebans.config.MessagesYML;
 import xyz.imdafatboss.sesamebans.utils.Msg;
 
@@ -20,12 +22,16 @@ public class KickCmd extends CommandFactory{
     }
     PlayerAPI papi;
     MessagesYML msg;
+    ChatAPI chat;
+    ConfigYML cfg;
 
     @Override
     public void execute(CommandSender sender, String[] args){
 
         papi = new PlayerAPI(plugin);
         msg = new MessagesYML(plugin);
+        chat = new ChatAPI(plugin);
+        cfg = new ConfigYML(plugin);
         if(args.length == 0){
 
             sender.sendMessage(msg.prefix() + msg.getUsageKick());
@@ -40,6 +46,7 @@ public class KickCmd extends CommandFactory{
             if(p != null){
 
                 papi.kickPlayer(p);
+                chat.broadcastKick(p, sender.getName(), cfg.getDefaultKick());
                 return;
 
             }
@@ -69,6 +76,7 @@ public class KickCmd extends CommandFactory{
                 String reason = Msg.translate(msg);
 
                 papi.kickPlayer(p, reason);
+                chat.broadcastKick(p, sender.getName(), reason);
                 return;
 
             }

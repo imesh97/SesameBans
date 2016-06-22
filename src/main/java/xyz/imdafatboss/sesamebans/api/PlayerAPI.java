@@ -131,6 +131,29 @@ public class PlayerAPI {
 
     }
 
+    public boolean isTempmuted(Player p){
+
+        data = new DataAPI(plugin);
+        for(String s : getData().get().getConfigurationSection("tempmutes").getKeys(false)){
+
+            if(s.equals(p.getUniqueId().toString())){
+
+                long time = data.getTempban(p).getLong("date");
+                if(System.currentTimeMillis() < time){
+
+                    return true;
+
+                }
+                return false;
+
+            }
+
+        }
+
+        return false;
+
+    }
+
     public void banPlayer(Player p, String reason){
 
         String uuid = p.getUniqueId().toString();
@@ -268,6 +291,24 @@ public class PlayerAPI {
     }
 
     public void tempMutePlayer(Player p, int sec, String reason){
+
+        long t = sec * 1000L;
+        long time = System.currentTimeMillis() + t;
+        String uuid = p.getUniqueId().toString();
+        FileManager.Config cfg = getData();
+        String path = "tempmutes." + uuid + ".";
+
+        cfg.get().getConfigurationSection("tempmutes").createSection(uuid);
+        cfg.get().set(path + "name", p.getName());
+        cfg.get().set(path + "uuid", uuid);
+        cfg.get().set(path + "reason", reason);
+        cfg.get().set(path + "date", time);
+
+        cfg.save();
+
+    }
+
+    public void tempMutePlayer(OfflinePlayer p, int sec, String reason){
 
         long t = sec * 1000L;
         long time = System.currentTimeMillis() + t;

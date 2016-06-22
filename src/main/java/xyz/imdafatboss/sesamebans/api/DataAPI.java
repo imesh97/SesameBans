@@ -62,4 +62,16 @@ public class DataAPI {
 
     }
 
+    public ConfigurationSection getTempmute(Player p){
+
+        return getData().get().getConfigurationSection("tempmutes." + p.getUniqueId().toString());
+
+    }
+
+    public ConfigurationSection getTempmute(UUID uuid){
+
+        return getData().get().getConfigurationSection("tempmutes." + uuid.toString());
+
+    }
+
 }

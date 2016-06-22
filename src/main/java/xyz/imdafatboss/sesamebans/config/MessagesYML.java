@@ -161,4 +161,16 @@ public class MessagesYML {
 
     }
 
+    public String getUsageTempMute(){
+
+        return Msg.translate(getConfig().get().getString("usage.tempmute"));
+
+    }
+
+    public String getTempmuteBroadcast(){
+
+        return Msg.translate(getConfig().get().getString("broadcast.tempmute"));
+
+    }
+
 }

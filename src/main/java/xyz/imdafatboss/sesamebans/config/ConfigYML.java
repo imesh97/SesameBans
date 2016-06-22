@@ -113,6 +113,28 @@ public class ConfigYML {
 
     }
 
+    public String getTempmuteScreen(){
+
+        return getConfig().get().getString("screen.tempmute");
+
+    }
+
+    public String tempmuteScreen(Player p){
+
+        data = new DataAPI(plugin);
+        String s = getTempmuteScreen();
+        ConfigurationSection c = data.getTempmute(p);
+        String time = TimeUtils.get(c.getLong("date"));
+
+        String s1 = s.replaceAll("%player%", p.getName());
+        String s2 = s1.replaceAll("%reason%", c.getString("reason"));
+        String s3 = s2.replaceAll("%time%", time);
+        String s4 = Msg.translate(s3);
+
+        return s4;
+
+    }
+
     public String getMuteScreen(){
 
         return getConfig().get().getString("screen.mute");

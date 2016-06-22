@@ -321,4 +321,59 @@ public class ChatAPI {
 
     }
 
+    // Tempmuting
+    public void broadcastTempmute(Player p, String tempmuter){
+
+        msg = new MessagesYML(plugin);
+        data = new DataAPI(plugin);
+        String now = TimeUtils.getDate(System.currentTimeMillis());
+        ConfigurationSection c = data.getTempmute(p);
+        String reason = c.getString("reason");
+        long t = c.getLong("date");
+        String time = TimeUtils.get(t);
+
+        String s = msg.getTempmuteBroadcast();
+        String s1 = s.replaceAll("%player%", p.getName());
+        String s2 = s1.replaceAll("%tempmuter%", tempmuter);
+        String s3 = s2.replaceAll("%date%", now);
+        String s4 = s3.replaceAll("%time%", time);
+        String s5 = s4.replaceAll("%reason%", reason);
+        String s6 = Msg.translate(s5);
+
+        for(Player p1 : Bukkit.getOnlinePlayers()){
+
+            p1.sendMessage(msg.prefix() + s6);
+
+        }
+        plugin.getLogger().info(s6);
+
+    }
+
+    public void broadcastTempmute(OfflinePlayer p, String tempmuter){
+
+        msg = new MessagesYML(plugin);
+        data = new DataAPI(plugin);
+        String now = TimeUtils.getDate(System.currentTimeMillis());
+        ConfigurationSection c = data.getTempmute(p.getUniqueId());
+        String reason = c.getString("reason");
+        long t = c.getLong("date");
+        String time = TimeUtils.get(t);
+
+        String s = msg.getTempmuteBroadcast();
+        String s1 = s.replaceAll("%player%", p.getName());
+        String s2 = s1.replaceAll("%tempmuter%", tempmuter);
+        String s3 = s2.replaceAll("%date%", now);
+        String s4 = s3.replaceAll("%time%", time);
+        String s5 = s4.replaceAll("%reason%", reason);
+        String s6 = Msg.translate(s5);
+
+        for(Player p1 : Bukkit.getOnlinePlayers()){
+
+            p1.sendMessage(msg.prefix() + s6);
+
+        }
+        plugin.getLogger().info(s6);
+
+    }
+
 }
