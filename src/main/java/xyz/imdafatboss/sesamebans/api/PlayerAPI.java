@@ -138,6 +138,7 @@ public class PlayerAPI {
         String path = "bans." + uuid + ".";
 
         cfg.get().getConfigurationSection("bans").createSection(uuid);
+        cfg.get().set(path + "name", p.getName());
         cfg.get().set(path + "uuid", uuid);
         cfg.get().set(path + "reason", reason);
 
@@ -152,6 +153,7 @@ public class PlayerAPI {
         String path = "bans." + uuid + ".";
 
         cfg.get().getConfigurationSection("bans").createSection(uuid);
+        cfg.get().set(path + "name", p.getName());
         cfg.get().set(path + "uuid", uuid);
         cfg.get().set(path + "reason", reason);
 
@@ -186,6 +188,7 @@ public class PlayerAPI {
         String path = "mutes." + uuid + ".";
 
         cfg.get().getConfigurationSection("mutes").createSection(uuid);
+        cfg.get().set(path + "name", p.getName());
         cfg.get().set(path + "uuid", uuid);
         cfg.get().set(path + "reason", reason);
 
@@ -200,6 +203,7 @@ public class PlayerAPI {
         String path = "mutes." + uuid + ".";
 
         cfg.get().getConfigurationSection("mutes").createSection(uuid);
+        cfg.get().set(path + "name", p.getName());
         cfg.get().set(path + "uuid", uuid);
         cfg.get().set(path + "reason", reason);
 
@@ -236,6 +240,7 @@ public class PlayerAPI {
         String path = "tempbans." + uuid + ".";
 
         cfg.get().getConfigurationSection("tempbans").createSection(uuid);
+        cfg.get().set(path + "name", p.getName());
         cfg.get().set(path + "uuid", uuid);
         cfg.get().set(path + "reason", reason);
         cfg.get().set(path + "date", time);
@@ -253,6 +258,7 @@ public class PlayerAPI {
         String path = "tempbans." + uuid + ".";
 
         cfg.get().getConfigurationSection("tempbans").createSection(uuid);
+        cfg.get().set(path + "name", p.getName());
         cfg.get().set(path + "uuid", uuid);
         cfg.get().set(path + "reason", reason);
         cfg.get().set(path + "date", time);
@@ -270,6 +276,7 @@ public class PlayerAPI {
         String path = "tempmutes." + uuid + ".";
 
         cfg.get().getConfigurationSection("tempmutes").createSection(uuid);
+        cfg.get().set(path + "name", p.getName());
         cfg.get().set(path + "uuid", uuid);
         cfg.get().set(path + "reason", reason);
         cfg.get().set(path + "date", time);
