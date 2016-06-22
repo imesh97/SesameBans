@@ -26,3 +26,6 @@ commands:
     tempban:
         description: Tempban a player
         aliases: [tempbanp, tempbanplayer, bantemp]
+    tempmute:
+        description: Tempmute a player
+        aliases: [tempmutep, tempmuteplayer, mutetemp]

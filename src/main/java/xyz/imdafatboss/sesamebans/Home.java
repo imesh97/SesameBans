@@ -9,6 +9,7 @@ import xyz.imdafatboss.sesamebans.config.FileManager;
 import xyz.imdafatboss.sesamebans.events.BanEvents;
 import xyz.imdafatboss.sesamebans.events.MuteEvents;
 import xyz.imdafatboss.sesamebans.events.TempbanEvents;
+import xyz.imdafatboss.sesamebans.events.TempmuteEvents;
 
 import java.util.Arrays;
 
@@ -38,6 +39,7 @@ public class Home extends JavaPlugin implements Listener{
         getCommand("unmute").setExecutor(cmd);
         getCommand("kick").setExecutor(cmd);
         getCommand("tempban").setExecutor(cmd);
+        getCommand("tempmute").setExecutor(cmd);
 
         String[] scAliases = {"sc", "schat", "staffc"};
         getCommand("staffchat").setAliases(Arrays.asList(scAliases));
@@ -67,10 +69,15 @@ public class Home extends JavaPlugin implements Listener{
         getCommand("tempban").setAliases(Arrays.asList(tempbanAliases));
         getCommand("tempban").setDescription("Tempban a player");
 
+        String[] tempmuteAliases = {"tempmutep", "tempmuteplayer", "mutetemp"};
+        getCommand("tempmute").setAliases(Arrays.asList(tempmuteAliases));
+        getCommand("tempmute").setDescription("Tempmute a player");
+
         // Events
         pm.registerEvents(new BanEvents(this), this);
         pm.registerEvents(new MuteEvents(this), this);
         pm.registerEvents(new TempbanEvents(this), this);
+        pm.registerEvents(new TempmuteEvents(this), this);
 
     }
 
