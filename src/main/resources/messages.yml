@@ -29,6 +29,9 @@ not:
 frozen: '&bYou have been frozen.'
 unfroze: '&7You have been unfrozen.'
 
+vanished: '&8You have vanished.'
+unvanished: '&7You have unvanished.'
+
 staffmode:
     activated: '&aYou have activated &7STAFF MODE.'
     deactivated: '&cYou have deactivated &7STAFF MODE.'

@@ -197,4 +197,16 @@ public class MessagesYML {
 
     }
 
+    public String getVanished(){
+
+        return Msg.translate(getConfig().get().getString("vanished"));
+
+    }
+
+    public String getUnvanished(){
+
+        return Msg.translate(getConfig().get().getString("unvanished"));
+
+    }
+
 }

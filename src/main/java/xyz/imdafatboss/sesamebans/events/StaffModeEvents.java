@@ -87,6 +87,7 @@ public class StaffModeEvents implements Listener{
     @EventHandler
     public void onPlayerVanish(PlayerInteractEvent e){
 
+        msg = new MessagesYML(plugin);
         Player p = e.getPlayer();
         Action a = e.getAction();
         if(a == Action.RIGHT_CLICK_BLOCK || a == Action.RIGHT_CLICK_AIR){
@@ -105,6 +106,7 @@ public class StaffModeEvents implements Listener{
 
                             }
                             StaffMode.vanished.add(p);
+                            p.sendMessage(msg.prefix() + msg.getVanished());
                             return;
 
                         }
@@ -114,6 +116,7 @@ public class StaffModeEvents implements Listener{
 
                         }
                         StaffMode.vanished.remove(p);
+                        p.sendMessage(msg.prefix() + msg.getUnvanished());
                         return;
 
                     }
