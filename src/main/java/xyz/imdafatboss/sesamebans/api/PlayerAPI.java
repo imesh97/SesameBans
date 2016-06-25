@@ -352,28 +352,39 @@ public class PlayerAPI {
         cfg = new ConfigYML(plugin);
 
         String reason = cfg.prefix() + cfg.getIPBanScreen();
-        Bukkit.getBanList(BanList.Type.IP).addBan(p.getName(), reason, null, sender.getName());
+        String ip = p.getAddress().getAddress().toString().substring(1);
+
+        Bukkit.getBanList(BanList.Type.NAME).addBan(p.getName(), reason, null, sender.getName());
+        Bukkit.getBanList(BanList.Type.IP).addBan(ip, reason, null, sender.getName());
 
     }
 
     public void ipbanPlayer(OfflinePlayer p, CommandSender sender){
 
         cfg = new ConfigYML(plugin);
-
+        String ip = getData().get().getString("ips." + p.getUniqueId().toString());
         String reason = cfg.prefix() + cfg.getIPBanScreen();
-        Bukkit.getBanList(BanList.Type.IP).addBan(p.getName(), reason, null, sender.getName());
+
+        Bukkit.getBanList(BanList.Type.NAME).addBan(p.getName(), reason, null, sender.getName());
+        Bukkit.getBanList(BanList.Type.IP).addBan(ip, reason, null, sender.getName());
 
     }
 
     public void unIPBanPlayer(Player p){
 
-        Bukkit.getBanList(BanList.Type.IP).pardon(p.getName());
+        String ip = p.getAddress().getAddress().toString().substring(1);
+
+        Bukkit.getBanList(BanList.Type.NAME).pardon(p.getName());
+        Bukkit.getBanList(BanList.Type.IP).pardon(ip);
 
     }
 
     public void unIPBanPlayer(OfflinePlayer p){
 
-        Bukkit.getBanList(BanList.Type.IP).pardon(p.getName());
+        String ip = getData().get().getString("ips." + p.getUniqueId().toString());
+
+        Bukkit.getBanList(BanList.Type.NAME).pardon(p.getName());
+        Bukkit.getBanList(BanList.Type.IP).pardon(ip);
 
     }
 
