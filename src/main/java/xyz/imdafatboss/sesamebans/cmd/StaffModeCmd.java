@@ -34,7 +34,7 @@ public class StaffModeCmd extends CommandFactory{
 
             StaffMode.inventory.remove(p);
             StaffMode.armor.remove(p);
-            
+
             StaffMode.inventory.put(p, inv);
             StaffMode.armor.put(p, armor);
 
@@ -61,9 +61,11 @@ public class StaffModeCmd extends CommandFactory{
 
             ItemStack is = inv.getItem(i);
             p.getInventory().addItem(is);
+            p.updateInventory();
 
         }
         p.getInventory().setArmorContents(armor);
+        p.updateInventory();
 
         p.sendMessage(msg.prefix() + msg.getDeactivatedStaffMode());
 
