@@ -11,4 +11,4 @@ screen:
     tempban: '&cYou &7(%player%)&c are tempbanned on this server for: &7[&a%reason%&7]&c. Expires in &a%time%'
     tempmute: '&cYou &7(%player%)&c are tempmuted on this server for: &7[&a%reason%&7]&c. Expires in &a%time%'
 
-randomtp-redius: 1500
+randomtp-radius: 1500
