@@ -1,6 +1,9 @@
 package xyz.imdafatboss.sesamebans.api;
 
+import org.bukkit.BanList;
+import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import xyz.imdafatboss.sesamebans.Home;
 import xyz.imdafatboss.sesamebans.config.ConfigYML;
@@ -84,22 +87,6 @@ public class PlayerAPI {
         for(String s : getData().get().getConfigurationSection("mutes").getKeys(false)){
 
             if(s.equals(p.getUniqueId().toString())){
-
-                return true;
-
-            }
-
-        }
-
-        return false;
-
-    }
-
-    public boolean isIPBanned(String ip){
-
-        for(String s : getData().get().getStringList("ipbans")){
-
-            if(s.equals(ip)){
 
                 return true;
 
@@ -360,83 +347,33 @@ public class PlayerAPI {
 
     }
 
-    public void ipbanPlayer(Player p){
+    public void ipbanPlayer(Player p, CommandSender sender){
 
-        List<String> ips = getIPs(p);
-        List<String> current = getData().get().getStringList("ipbans");
+        cfg = new ConfigYML(plugin);
 
-        for(String s : ips){
-
-            if(!current.contains(s)) {
-
-                current.add(s);
-
-            }
-
-        }
-
-        getData().get().set("ipbans", current);
-        getData().save();
+        String reason = cfg.prefix() + cfg.getIPBanScreen();
+        Bukkit.getBanList(BanList.Type.IP).addBan(p.getName(), reason, null, sender.getName());
 
     }
 
-    public void ipbanPlayer(OfflinePlayer p){
+    public void ipbanPlayer(OfflinePlayer p, CommandSender sender){
 
-        List<String> ips = getIPs(p);
-        List<String> current = getData().get().getStringList("ipbans");
+        cfg = new ConfigYML(plugin);
 
-        for(String s : ips){
-
-            if(!current.contains(s)) {
-
-                current.add(s);
-
-            }
-
-        }
-
-        getData().get().set("ipbans", current);
-        getData().save();
+        String reason = cfg.prefix() + cfg.getIPBanScreen();
+        Bukkit.getBanList(BanList.Type.IP).addBan(p.getName(), reason, null, sender.getName());
 
     }
 
     public void unIPBanPlayer(Player p){
 
-        List<String> ips = getIPs(p);
-        List<String> current = getData().get().getStringList("ipbans");
-
-        for(String s : ips){
-
-            if(!current.contains(s)) {
-
-                current.remove(s);
-
-            }
-
-        }
-
-        getData().get().set("ipbans", current);
-        getData().save();
+        Bukkit.getBanList(BanList.Type.IP).pardon(p.getName());
 
     }
 
     public void unIPBanPlayer(OfflinePlayer p){
 
-        List<String> ips = getIPs(p);
-        List<String> current = getData().get().getStringList("ipbans");
-
-        for(String s : ips){
-
-            if(!current.contains(s)) {
-
-                current.remove(s);
-
-            }
-
-        }
-
-        getData().get().set("ipbans", current);
-        getData().save();
+        Bukkit.getBanList(BanList.Type.IP).pardon(p.getName());
 
     }
 

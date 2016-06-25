@@ -41,7 +41,7 @@ public class IPBanCmd extends CommandFactory{
             if(Bukkit.getPlayer(a1) != null){
 
                 Player p = Bukkit.getPlayer(a1);
-                papi.ipbanPlayer(p);
+                papi.ipbanPlayer(p, sender);
                 p.kickPlayer(msg.prefix() + cfg.getIPBanScreen());
                 return;
 
@@ -49,7 +49,7 @@ public class IPBanCmd extends CommandFactory{
             else{
 
                 OfflinePlayer p = Bukkit.getOfflinePlayer(a1);
-                papi.ipbanPlayer(p);
+                papi.ipbanPlayer(p, sender);
                 return;
 
             }

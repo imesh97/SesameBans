@@ -90,7 +90,6 @@ public class Home extends JavaPlugin implements Listener{
         pm.registerEvents(new TempbanEvents(this), this);
         pm.registerEvents(new TempmuteEvents(this), this);
         pm.registerEvents(new StaffModeEvents(this), this);
-        pm.registerEvents(new IPBanEvents(this), this);
 
     }
 
