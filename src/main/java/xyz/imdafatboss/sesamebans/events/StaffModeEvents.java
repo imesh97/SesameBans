@@ -161,7 +161,7 @@ public class StaffModeEvents implements Listener{
 
                         if(!StaffMode.freeze.contains(t)){
 
-                            StaffMode.freeze.add(p);
+                            StaffMode.freeze.add(t);
                             t.sendMessage(msg.prefix() + msg.getFrozen());
                             return;
 
