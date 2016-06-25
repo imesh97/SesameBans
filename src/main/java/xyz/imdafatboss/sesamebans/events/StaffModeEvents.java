@@ -70,7 +70,6 @@ public class StaffModeEvents implements Listener{
                             return;
 
                         }
-                        p.setAllowFlight(false);
                         p.setFlying(false);
                         StaffMode.fly.remove(p);
                         return;
