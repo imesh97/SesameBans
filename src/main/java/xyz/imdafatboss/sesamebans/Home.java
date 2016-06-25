@@ -39,6 +39,7 @@ public class Home extends JavaPlugin implements Listener{
         getCommand("tempmute").setExecutor(cmd);
         getCommand("staffmode").setExecutor(cmd);
         getCommand("ipban").setExecutor(cmd);
+        getCommand("unbanip").setExecutor(cmd);
 
         String[] scAliases = {"sc", "schat", "staffc"};
         getCommand("staffchat").setAliases(Arrays.asList(scAliases));
