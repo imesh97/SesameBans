@@ -62,11 +62,13 @@ public class StaffModeEvents implements Listener{
 
                         if(!StaffMode.fly.contains(p)) {
 
+                            p.setAllowFlight(true);
                             p.setFlying(true);
                             StaffMode.fly.add(p);
                             return;
 
                         }
+                        p.setAllowFlight(false);
                         p.setFlying(false);
                         StaffMode.fly.remove(p);
                         return;
