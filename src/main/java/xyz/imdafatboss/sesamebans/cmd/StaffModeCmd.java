@@ -54,12 +54,10 @@ public class StaffModeCmd extends CommandFactory{
         p.getInventory().clear();
         for(int i = 0; i < inv.getSize(); i++){
 
-            if(inv.getItem(i) != null || inv.getItem(i).getType() != Material.AIR) {
+            if(inv.getItem(i) == null || inv.getItem(i).getType() == Material.AIR) { continue; }
 
-                ItemStack is = inv.getItem(i);
-                p.getInventory().addItem(is);
-
-            }
+            ItemStack is = inv.getItem(i);
+            p.getInventory().addItem(is);
 
         }
         p.getInventory().setArmorContents(armor);
