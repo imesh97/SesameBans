@@ -1,5 +1,6 @@
 package xyz.imdafatboss.sesamebans.cmd;
 
+import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -53,8 +54,12 @@ public class StaffModeCmd extends CommandFactory{
         p.getInventory().clear();
         for(int i = 0; i < inv.getSize(); i++){
 
-            ItemStack is = inv.getItem(i);
-            p.getInventory().addItem(is);
+            if(inv.getItem(i) != null || inv.getItem(i).getType() != Material.AIR) {
+                
+                ItemStack is = inv.getItem(i);
+                p.getInventory().addItem(is);
+
+            }
 
         }
         p.getInventory().setArmorContents(armor);
