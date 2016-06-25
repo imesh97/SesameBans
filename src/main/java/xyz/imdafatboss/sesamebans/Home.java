@@ -6,10 +6,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import xyz.imdafatboss.sesamebans.cmd.mgt.CommandManager;
 import xyz.imdafatboss.sesamebans.config.FileManager;
-import xyz.imdafatboss.sesamebans.events.BanEvents;
-import xyz.imdafatboss.sesamebans.events.MuteEvents;
-import xyz.imdafatboss.sesamebans.events.TempbanEvents;
-import xyz.imdafatboss.sesamebans.events.TempmuteEvents;
+import xyz.imdafatboss.sesamebans.events.*;
 
 import java.util.Arrays;
 
@@ -40,6 +37,7 @@ public class Home extends JavaPlugin implements Listener{
         getCommand("kick").setExecutor(cmd);
         getCommand("tempban").setExecutor(cmd);
         getCommand("tempmute").setExecutor(cmd);
+        getCommand("staffmode").setExecutor(cmd);
 
         String[] scAliases = {"sc", "schat", "staffc"};
         getCommand("staffchat").setAliases(Arrays.asList(scAliases));
@@ -73,11 +71,16 @@ public class Home extends JavaPlugin implements Listener{
         getCommand("tempmute").setAliases(Arrays.asList(tempmuteAliases));
         getCommand("tempmute").setDescription("Tempmute a player");
 
+        String[] staffmodeAliases = {"staff", "modestaff"};
+        getCommand("staffmode").setAliases(Arrays.asList(staffmodeAliases));
+        getCommand("staffmode").setDescription("Enter into staff mode");
+
         // Events
         pm.registerEvents(new BanEvents(this), this);
         pm.registerEvents(new MuteEvents(this), this);
         pm.registerEvents(new TempbanEvents(this), this);
         pm.registerEvents(new TempmuteEvents(this), this);
+        pm.registerEvents(new StaffModeEvents(this), this);
 
     }
 

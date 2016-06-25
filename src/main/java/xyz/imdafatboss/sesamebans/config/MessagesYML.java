@@ -173,4 +173,28 @@ public class MessagesYML {
 
     }
 
+    public String getActivatedStaffMode(){
+
+        return Msg.translate(getConfig().get().getString("staffmode.activated"));
+
+    }
+
+    public String getDeactivatedStaffMode(){
+
+        return Msg.translate(getConfig().get().getString("staffmode.deactivated"));
+
+    }
+
+    public String getFrozen(){
+
+        return Msg.translate(getConfig().get().getString("frozen"));
+
+    }
+
+    public String getUnfrozen(){
+
+        return Msg.translate(getConfig().get().getString("unfrozen"));
+
+    }
+
 }

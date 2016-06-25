@@ -155,4 +155,10 @@ public class ConfigYML {
 
     }
 
+    public int getTPRadius(){
+
+        return getConfig().get().getInt("randomtp-radius");
+
+    }
+
 }

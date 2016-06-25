@@ -29,3 +29,6 @@ commands:
     tempmute:
         description: Tempmute a player
         aliases: [tempmutep, tempmuteplayer, mutetemp]
+    staffmode:
+        description: Enter into staff mode
+        aliases: [staff, modestaff]
