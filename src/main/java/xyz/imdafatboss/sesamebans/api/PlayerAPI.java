@@ -367,10 +367,8 @@ public class PlayerAPI {
 
     public void unIPBanPlayer(OfflinePlayer p){
 
-        String ip = getData().get().getString("ips." + p.getUniqueId().toString());
-
-        Bukkit.getBanList(BanList.Type.NAME).pardon(p.getName());
-        Bukkit.getBanList(BanList.Type.IP).pardon(ip);
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "pardon " + p.getName());
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "pardonip " + p.getName());
 
     }
 
