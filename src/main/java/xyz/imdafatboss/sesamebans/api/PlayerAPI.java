@@ -333,20 +333,6 @@ public class PlayerAPI {
 
     }
 
-    public List<String> getIPs(Player p){
-
-        UUID uuid = p.getUniqueId();
-        return getData().get().getStringList("ips." + uuid.toString());
-
-    }
-
-    public List<String> getIPs(OfflinePlayer p){
-
-        UUID uuid = p.getUniqueId();
-        return getData().get().getStringList("ips." + uuid.toString());
-
-    }
-
     public void ipbanPlayer(Player p, CommandSender sender){
 
         cfg = new ConfigYML(plugin);
