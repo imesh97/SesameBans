@@ -166,9 +166,13 @@ public class StaffModeEvents implements Listener{
                             return;
 
                         }
-                        StaffMode.freeze.remove(t);
-                        t.sendMessage(msg.prefix() + msg.getUnfrozen());
-                        return;
+                        else {
+
+                            StaffMode.freeze.remove(t);
+                            t.sendMessage(msg.prefix() + msg.getUnfrozen());
+                            return;
+
+                        }
 
                     }
 
