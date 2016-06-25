@@ -32,6 +32,9 @@ public class StaffModeCmd extends CommandFactory{
             Inventory inv = p.getInventory();
             ItemStack[] armor = p.getInventory().getArmorContents();
 
+            StaffMode.inventory.remove(p);
+            StaffMode.armor.remove(p);
+            
             StaffMode.inventory.put(p, inv);
             StaffMode.armor.put(p, armor);
 
