@@ -161,4 +161,10 @@ public class ConfigYML {
 
     }
 
+    public String getIPBanScreen(){
+
+        return Msg.translate(getConfig().get().getString("screen.ipban"));
+
+    }
+
 }

@@ -38,6 +38,7 @@ public class Home extends JavaPlugin implements Listener{
         getCommand("tempban").setExecutor(cmd);
         getCommand("tempmute").setExecutor(cmd);
         getCommand("staffmode").setExecutor(cmd);
+        getCommand("ipban").setExecutor(cmd);
 
         String[] scAliases = {"sc", "schat", "staffc"};
         getCommand("staffchat").setAliases(Arrays.asList(scAliases));
@@ -75,12 +76,21 @@ public class Home extends JavaPlugin implements Listener{
         getCommand("staffmode").setAliases(Arrays.asList(staffmodeAliases));
         getCommand("staffmode").setDescription("Enter into staff mode");
 
+        String[] ipbanAliases = {"banip"};
+        getCommand("ipban").setAliases(Arrays.asList(ipbanAliases));
+        getCommand("ipban").setDescription("Ban a player through IPs");
+
+        String[] unbanipAliases = {"ipunban"};
+        getCommand("unbanip").setAliases(Arrays.asList(unbanipAliases));
+        getCommand("unbanip").setDescription("Unban a player through IPs");
+
         // Events
         pm.registerEvents(new BanEvents(this), this);
         pm.registerEvents(new MuteEvents(this), this);
         pm.registerEvents(new TempbanEvents(this), this);
         pm.registerEvents(new TempmuteEvents(this), this);
         pm.registerEvents(new StaffModeEvents(this), this);
+        pm.registerEvents(new IPBanEvents(this), this);
 
     }
 

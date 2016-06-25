@@ -173,6 +173,18 @@ public class MessagesYML {
 
     }
 
+    public String getUsageIPBan(){
+
+        return Msg.translate(getConfig().get().getString("usage.ipban"));
+
+    }
+
+    public String getUsageUnbanIP(){
+
+        return Msg.translate(getConfig().get().getString("usage.unbanip"));
+
+    }
+
     public String getActivatedStaffMode(){
 
         return Msg.translate(getConfig().get().getString("staffmode.activated"));

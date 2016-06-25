@@ -25,3 +25,10 @@ tempmutes:
         uuid: 'c03f1ddc-af6a-407e-8944-d82f6fcbf595'
         reason: '&cThis is just a test, on a locked account.'
         time: 3657
+ipbans:
+    - '134.0.0.0.0.0.0'
+
+ips:
+    c03f1ddc-af6a-407e-8944-d82f6fcbf595:
+        - '134.0.0.0.0.0.0'
+        - '6.6.6.6.6.6.6.6.6'

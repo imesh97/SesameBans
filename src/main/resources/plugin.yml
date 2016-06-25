@@ -32,3 +32,9 @@ commands:
     staffmode:
         description: Enter into staff mode
         aliases: [staff, modestaff]
+    ipban:
+        description: Ban a player through IPs
+        aliases: [banip]
+    unbanip:
+        description: Unban a player through IPs
+        aliases: [ipunban]

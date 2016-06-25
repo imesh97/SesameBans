@@ -8,6 +8,9 @@ import xyz.imdafatboss.sesamebans.config.FileManager;
 import xyz.imdafatboss.sesamebans.config.MessagesYML;
 import xyz.imdafatboss.sesamebans.utils.Msg;
 
+import java.util.List;
+import java.util.UUID;
+
 public class PlayerAPI {
 
     Home plugin;
@@ -340,6 +343,100 @@ public class PlayerAPI {
         String s = cfg.prefix() + cfg.getDefaultKick();
 
         p.kickPlayer(s);
+
+    }
+
+    public List<String> getIPs(Player p){
+
+        UUID uuid = p.getUniqueId();
+        return getData().get().getStringList("ips." + uuid.toString());
+
+    }
+
+    public List<String> getIPs(OfflinePlayer p){
+
+        UUID uuid = p.getUniqueId();
+        return getData().get().getStringList("ips." + uuid.toString());
+
+    }
+
+    public void ipbanPlayer(Player p){
+
+        List<String> ips = getIPs(p);
+        List<String> current = getData().get().getStringList("ipbans");
+
+        for(String s : ips){
+
+            if(!current.contains(s)) {
+
+                current.add(s);
+
+            }
+
+        }
+
+        getData().get().set("ipbans", current);
+        getData().save();
+
+    }
+
+    public void ipbanPlayer(OfflinePlayer p){
+
+        List<String> ips = getIPs(p);
+        List<String> current = getData().get().getStringList("ipbans");
+
+        for(String s : ips){
+
+            if(!current.contains(s)) {
+
+                current.add(s);
+
+            }
+
+        }
+
+        getData().get().set("ipbans", current);
+        getData().save();
+
+    }
+
+    public void unIPBanPlayer(Player p){
+
+        List<String> ips = getIPs(p);
+        List<String> current = getData().get().getStringList("ipbans");
+
+        for(String s : ips){
+
+            if(!current.contains(s)) {
+
+                current.remove(s);
+
+            }
+
+        }
+
+        getData().get().set("ipbans", current);
+        getData().save();
+
+    }
+
+    public void unIPBanPlayer(OfflinePlayer p){
+
+        List<String> ips = getIPs(p);
+        List<String> current = getData().get().getStringList("ipbans");
+
+        for(String s : ips){
+
+            if(!current.contains(s)) {
+
+                current.remove(s);
+
+            }
+
+        }
+
+        getData().get().set("ipbans", current);
+        getData().save();
 
     }
 

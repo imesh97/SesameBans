@@ -11,6 +11,8 @@ usage:
     kick: '&7/kick <player> [reason]'
     tempban: '&7/tempban <player> <seconds> <reason>'
     tempmute: '&7/tempmute <player> <seconds> <reason>'
+    ipban: '&7/ipban <player>'
+    unbanip: '&7/unbanip <player>'
 broadcast:
     ban: '&7[&a%player%&7] has been &c&lbanned by [&a%banner%&7] on [&b%date%&7] for [&c%reason%&7]'
     unban: '&7[&a%player%&7] has been &b&lunbanned by [&a%unbanner%&7] on [&b%date%&7]'
