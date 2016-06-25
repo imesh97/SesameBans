@@ -23,7 +23,7 @@ public class IPBanEvents implements Listener{
     ConfigYML cfg;
 
     @EventHandler
-    public void onPLayerIsIPBanned(PlayerLoginEvent e){
+    public void onPlayerIsIPBanned(PlayerLoginEvent e){
 
         papi = new PlayerAPI(plugin);
         cfg = new ConfigYML(plugin);
