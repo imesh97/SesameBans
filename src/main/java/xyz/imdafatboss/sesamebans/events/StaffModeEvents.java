@@ -213,12 +213,7 @@ public class StaffModeEvents implements Listener{
 
                     if(StaffMode.isRandomStack(p.getItemInHand())){
 
-                        int radius = cfg.getTPRadius();
-                        Location loc = Locations.newLocation(p.getWorld(), radius);
-
-                        p.teleport(loc);
-                        p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 300, 100));
-
+                        Locations.randomPlayer(p);
                         return;
 
                     }

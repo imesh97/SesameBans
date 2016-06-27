@@ -1,21 +1,25 @@
 package xyz.imdafatboss.sesamebans.utils;
 
-import org.bukkit.Location;
-import org.bukkit.World;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 
-import java.util.Random;
+import java.util.*;
 
 public class Locations {
 
-    public static Location newLocation(World world, int range){
+    public static void randomPlayer(Player player){
 
-        Random r = new Random();
-        int x = r.nextInt(range) + 1;
-        int y = 150;
-        int z = r.nextInt(range) + 1;
+        ArrayList<Player> players = new ArrayList<Player>();
+        for (Player e : Bukkit.getOnlinePlayers()){
 
-        Location loc = new Location(world, x, y, z);
-        return loc;
+            if(!e.getName().equals(player.getName())) {
+
+                players.add(e);
+
+            }
+        }
+        Player randomPlayer = players.get(new Random().nextInt(players.size()));
+        player.teleport(randomPlayer.getLocation());
 
     }
 
