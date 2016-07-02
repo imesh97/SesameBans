@@ -96,7 +96,7 @@ public class StaffMode {
         ItemMeta im = is.getItemMeta();
 
         im.setDisplayName(Msg.translate("&6&lRANDOM TP"));
-        String[] lore = {Msg.translate("&eTeleport to a random location."), Msg.translate("&6Just with a right click.")};
+        String[] lore = {Msg.translate("&eTeleport to a random player."), Msg.translate("&6Just with a right click.")};
         im.setLore(Arrays.asList(lore));
 
         is.setItemMeta(im);

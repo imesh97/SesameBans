@@ -213,6 +213,7 @@ public class StaffModeEvents implements Listener{
 
                     if(StaffMode.isRandomStack(p.getItemInHand())){
 
+                        e.setCancelled(true);
                         Locations.randomPlayer(p);
                         return;
 
