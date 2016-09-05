@@ -110,21 +110,27 @@ public class StaffMode {
 
         if(is != null || is.getType() != Material.AIR){
 
-            for(String s : is.getItemMeta().getLore()){
+            if(is.hasItemMeta() && is.getItemMeta().hasLore()) {
 
-                if(s.contains("Just with a right click.")){
+                for (String s : is.getItemMeta().getLore()) {
 
-                    return true;
+                    if (s.contains("Just with a right click.")) {
+
+                        return true;
+
+                    }
 
                 }
 
+                return false;
+
             }
 
-            return false;
+            else return false;
 
         }
 
-        return false;
+        else return false;
 
     }
 

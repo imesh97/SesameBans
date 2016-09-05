@@ -44,7 +44,11 @@ public class StaffModeEvents implements Listener{
 
             }
 
+            return;
+
         }
+
+        return;
 
     }
 
