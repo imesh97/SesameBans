@@ -2,10 +2,12 @@ package xyz.imdafatboss.sesamebans.utils;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.util.*;
 
 import java.util.*;
 
@@ -356,46 +358,51 @@ public class StaffMode {
 
     public static void thru(Player p){
 
-        Location loc = p.getLocation();
-        int radius = 5;
-        for (int x = -(radius); x <= radius; x ++)
-        {
-            for (int y = -(radius); y <= radius; y ++)
-            {
-                for (int z = -(radius); z <= radius; z ++)
-                {
+        float pitch = p.getLocation().getPitch();
+        float yaw = p.getLocation().getYaw();
+        org.bukkit.util.Vector dir = p.getLocation().getDirection();
 
-                    Location l = new Location(p.getWorld(), x, y, z);
-                    if(l.getBlock().getType() != null || l.getBlock().getType() != Material.AIR && (x != 0 || y != 0 || z != 0)){
+        Block tar = getTarget(p, 5);
+        if(tar == null){
 
-                        int range = 3;
-                        for(int x1 = -(range); x1 <= range; x1++){
+            return;
 
-                            for (int y1 = -(range); y1 <= range; y1 ++)
-                            {
+        }
+        else{
 
-                                for (int z1 = -(range); z1 <= range; z1 ++)
-                                {
+            Location loc = tar.getLocation();
+            loc.setPitch(pitch);
+            loc.setYaw(yaw);
+            loc.setDirection(dir);
 
-                                    Location l1 = new Location(p.getWorld(), x1, y1, z1);
-                                    if(l1.getBlock().getType() == null || l1.getBlock().getType() == Material.AIR){
+            p.teleport(loc);
+            return;
 
-                                        p.teleport(l1);
-
-                                    }
-
-                                }
-
-                            }
-
-                        }
-
-                    }
-
-                }
-            }
         }
 
     }
+
+	public static Block getTarget(Player player, Integer range) {
+
+		BlockIterator iter = new BlockIterator(player, range);
+		Block lastBlock = iter.next();
+
+		while (iter.hasNext()) {
+
+			lastBlock = iter.next();
+
+			if (lastBlock.getType() == Material.AIR) {
+
+				return lastBlock;
+
+			}
+
+			continue;
+
+		}
+
+		return null;
+
+	}
 
 }
