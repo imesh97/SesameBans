@@ -29,92 +29,46 @@ public class UnbanCmd extends CommandFactory{
         papi = new PlayerAPI(plugin);
         msg = new MessagesYML(plugin);
         chat = new ChatAPI(plugin);
-        if(sender instanceof Player){
 
-            Player p = (Player) sender;
-            if(args.length == 0){
+        CommandSender p = sender;
+        if(args.length == 0){
 
-                p.sendMessage(msg.prefix() + msg.getUsageUnban());
-                return;
-
-            }
-            else if(args.length >= 1){
-
-                String a1 = args[0];
-                Player tar = Bukkit.getPlayer(a1);
-                if(tar != null){
-
-                    if(papi.isBanned(tar)){
-
-                        papi.unbanPlayer(tar);
-                        chat.broadcastUnban(tar, p.getName());
-                        return;
-
-                    }
-
-                    else{
-
-                        p.sendMessage(msg.prefix() + msg.getNotBanned());
-                        return;
-
-                    }
-
-                }
-
-                else{
-
-                    OfflinePlayer tarp = Bukkit.getOfflinePlayer(a1);
-                    if(tarp != null){
-
-                        if(papi.isBanned(tar)){
-
-                            papi.unbanOfflinePlayer(tarp);
-                            chat.broadcastUnban(tarp, p.getName());
-                            return;
-
-                        }
-
-                        else{
-
-                            p.sendMessage(msg.prefix() + msg.getNotBanned());
-                            return;
-
-                        }
-
-                    }
-
-                    else{
-
-                        p.sendMessage(msg.prefix() + msg.getPlayerNotExist());
-                        return;
-
-                    }
-
-                }
-
-            }
+            p.sendMessage(msg.prefix() + msg.getUsageUnban());
+            return;
 
         }
+        else if(args.length >= 1){
 
-        else{
+            String a1 = args[0];
+            Player tar = Bukkit.getPlayer(a1);
+            if(tar != null){
 
-            CommandSender p = sender;
-            if(args.length == 0){
+                if(papi.isBanned(tar)){
 
-                p.sendMessage(msg.prefix() + msg.getUsageUnban());
-                return;
+                    papi.unbanPlayer(tar);
+                    chat.broadcastUnban(tar, p.getName());
+                    return;
+
+                }
+
+                else{
+
+                    p.sendMessage(msg.prefix() + msg.getNotBanned());
+                    return;
+
+                }
 
             }
-            else if(args.length >= 1){
 
-                String a1 = args[0];
-                Player tar = Bukkit.getPlayer(a1);
-                if(tar != null){
+            else{
 
-                    if(papi.isBanned(tar)){
+                OfflinePlayer tarp = Bukkit.getOfflinePlayer(a1);
+                if(tarp != null){
 
-                        papi.unbanPlayer(tar);
-                        chat.broadcastUnban(tar, p.getName());
+                    if(papi.isBanned(tarp)){
+
+                        papi.unbanOfflinePlayer(tarp);
+                        chat.broadcastUnban(tarp, p.getName());
                         return;
 
                     }
@@ -130,32 +84,8 @@ public class UnbanCmd extends CommandFactory{
 
                 else{
 
-                    OfflinePlayer tarp = Bukkit.getOfflinePlayer(a1);
-                    if(tarp != null){
-
-                        if(papi.isBanned(tarp)){
-
-                            papi.unbanOfflinePlayer(tarp);
-                            chat.broadcastUnban(tarp, p.getName());
-                            return;
-
-                        }
-
-                        else{
-
-                            p.sendMessage(msg.prefix() + msg.getNotBanned());
-                            return;
-
-                        }
-
-                    }
-
-                    else{
-
-                        p.sendMessage(msg.prefix() + msg.getPlayerNotExist());
-                        return;
-
-                    }
+                    p.sendMessage(msg.prefix() + msg.getPlayerNotExist());
+                    return;
 
                 }
 
